@@ -7,16 +7,18 @@
     disable-initial-sort>
       <template slot="items" slot-scope="cards">
         <td>
-          <span class="font-icon icon-unique" v-if="cards.item.isUnique" />
-          {{ (cards.item.subname) ? `${cards.item.name}: ${cards.item.subname}` : `${cards.item.name}`}}
+          <span class="font-icon icon-unique" v-if="cards.item.isUnique"></span>
+          <card-popover :card="cards.item" :show-subname="true" my-style="py-2 pr-2" />
         </td>
-        <td v-html="factionIcons(cards.item.faction)"></td>
+        <td><span v-html="factionIcons(cards.item.faction)"></span>{{ cards.item.faction }}</td>
         <td>{{ cards.item.cost }}</td>
         <td>{{ cards.item.type }}</td>
         <td>
           <span v-if="cards.item.type !== $cfg.const.INVESTIGATOR" v-html="testIcons(cards.item)" />
         </td>
-        <td>{{ traitLists(cards.item.trait) }}</td>
+        <td>
+          <span v-for="(i, index) in cards.item.trait" :key="index">{{ `${i}. `}}</span>
+        </td>
         <td>{{ `${cards.item.includedPack.name} #${cards.item.number}` }}</td>
         <td>
           <investigator-mod v-if="cards.item.type === $cfg.const.INVESTIGATOR" :id="cards.item._id" @list="list()" />
@@ -33,17 +35,21 @@
 </template>
 
 <script>
+import cardPopover from '@/components/card/card-popover'
 import cardAdd from '@/components/card/card-add'
 import cardDel from '@/components/card/card-del'
 import investigatorMod from '@/components/card/investigator/investigator-mod'
 import playercardMod from '@/components/card/playercard/playercard-mod'
-import iconMixin from '@/components/mixins/icon-mixin'
+import replaceMixin from '@/components/mixins/replace-mixin'
+import cardListMixin from '@/components/mixins/card-list-mixin'
 
 export default {
   mixins: [
-    iconMixin
+    replaceMixin,
+    cardListMixin
   ],
   components: {
+    cardPopover,
     cardAdd,
     cardDel,
     playercardMod,
@@ -91,15 +97,11 @@ export default {
           sortable: false
         }
       ],
-      cards: {
-        cnt: 0,
-        draw: 0,
-        array: []
-      },
       p: {
         page: 1,
         draw: 0,
-        search: '',
+        columns: ['name'],
+        searches: [''],
         order: 'number',
         sort: 1,
         skip: 0,
@@ -107,36 +109,8 @@ export default {
       }
     }
   },
-  computed: {
-    setSkip: function () {
-      if (this.p.page < 0) return 0
-
-      return this.p.limit * (this.p.page - 1)
-    }
-  },
   mounted () {
     this.list()
-  },
-  methods: {
-    list () {
-      this.$axios.get(`${this.$cfg.path.api}data/card/list`, {
-        params: {
-          draw: this.p.draw + 1,
-          search: this.p.search,
-          order: this.p.order,
-          sort: this.p.sort,
-          limit: this.p.limit,
-          skip: this.setSkip
-        }
-      })
-      .then((res) => {
-        if (!res.data.success) throw new Error(res.data.msg)
-        this.cards = res.data.cards
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-    }
   }
 }
 </script>
@@ -215,5 +189,11 @@ export default {
   background-repeat: no-repeat;
   display: inline-block;
   box-sizing: border-box;
+}
+.popover {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 </style>

@@ -15,7 +15,7 @@ const cardSchema = new mongoose.Schema({
   backText: { type: String, default: '' },
   backFlavor: { type: String, default: '' },
   backImg: { type: String, default: '' },
-  subType: { type: String, default: null },
+  subtype: { type: String, default: null },
   cost: { type: Number, default: null },
   xp: { type: Number, default: null },
   trait: [{ type: String, default: null }],
