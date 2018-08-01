@@ -21,15 +21,17 @@ exports.list = (req, res) => {
     limit,
     sort,
     order,
-    search
-  } = req.query
+    searches,
+    columns
+  } = req.query;
 
   if (draw === undefined) res.send({ success: false, msg: 'params err draw' });
   if (skip === undefined) res.send({ success: false, msg: 'params err skip' });
   if (limit === undefined) res.send({ success: false, msg: 'params err limit' });
   if (sort === undefined) res.send({ success: false, msg: 'params err sort' });
   if (order === undefined) res.send({ success: false, msg: 'params err order' });
-  if (search === undefined) res.send({ success: false, msg: 'params err search' });
+  if (columns === undefined) res.send({ success: false, msg: 'params err columns' });
+  if (searches === undefined) res.send({ success: false, msg: 'params err searches' });
 
   skip = parseInt(skip);
   limit = parseInt(limit);
@@ -44,14 +46,15 @@ exports.list = (req, res) => {
   let f = {};
 
   Card.count(f)
-    .where('name').regex(search)
+    .where(columns[0]).regex(searches[0])
     .then((c) => {
       cards.cnt = c;
       let s = {};
       s[order] = sort;
       return Card.find(f)
-      .where('name').regex(search)
+      .where(columns[0]).regex(searches[0])
       .populate('includedPack')
+      .populate('deckRequirements')
       .sort(s)
       .skip(skip)
       .limit(limit);

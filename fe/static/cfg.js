@@ -1,7 +1,9 @@
 module.exports = {
   path: {
     // api: '/api/' npm run build 용
-    api: 'http://localhost:3000/api/'
+    api: 'http://localhost:3000/api/',
+    public: 'http://localhost:3000/',
+    web: 'http://localhost:8080/#/'
   },
   const: {
     ADD_MODE: '추가',
@@ -26,6 +28,11 @@ module.exports = {
     SLOT: '슬롯',
     TYPE: '카드 종류',
     SUBTYPE: '서브 타입',
-    UNIQUE: '유니크'
+    UNIQUE: '유니크',
+    REACTION: 'Reaction',
+    ELDERSIGN: 'Elder Sign',
+    FASTACTION: 'Fast Action',
+    ACTION: 'Action',
+    AUTOFAIL: 'Auto Fail'
   }
 }
