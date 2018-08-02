@@ -23,6 +23,6 @@ module.exports = {
 }
 ```
 4. Install NPM at the fe derectory: `cd fe` `npm install`
-5. Run backend server: `cd be` `npm start`
+5. Run backend server: `cd be` `npm start`, then, mongoose install sample data. It takes few seconds. You can check this `Core Set created` and `Sample cards created` message in console.
 6. Run frontend server: `cd fe` `npm run dev`
 Then, you can check this http://localhost:8080/#/cardlist, packlist, deck/new
