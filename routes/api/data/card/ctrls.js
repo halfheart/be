@@ -14,6 +14,48 @@ exports.card = (req, res) => {
   });
 }
 
+exports.deckSourceList = (req, res) => {
+  let {
+    id,
+    draw
+  } = req.query
+
+  if (id === undefined) res.send({ success: false, msg: 'params err id' });
+  if (draw === undefined) res.send({ success: false, msg: 'params err draw' });
+
+  let cards = {
+    cnt: 0,
+    draw: draw,
+    array: []
+  };
+
+  let f = {}
+
+  Card.find(f)
+    .where('type').equals('조사자')
+    .select('deckRequirements')
+    .then((c) => {
+      let nin = []
+
+      c.forEach((i) => {
+        i.deckRequirements.forEach((j) => {
+          nin.push(j);
+        });
+      });
+
+      return Card.find(f)
+        .where('_id').nin(nin)
+        .where('type').ne('조사자');
+    })
+    .then((c) => {
+      cards.array = c;
+      res.send({ success: true, cards: cards });
+    })
+    .catch((err) => {
+      res.send({ success: false, msg: err.message });
+    });
+}
+
 exports.list = (req, res) => {
   let {
     draw,
@@ -54,7 +96,13 @@ exports.list = (req, res) => {
       return Card.find(f)
       .where(columns[0]).regex(searches[0])
       .populate('includedPack')
-      .populate('deckRequirements')
+      .populate({
+        path: 'deckRequirements',
+        populate: {
+          path: 'includedPack',
+          select: 'name'
+        }
+      })
       .sort(s)
       .skip(skip)
       .limit(limit);

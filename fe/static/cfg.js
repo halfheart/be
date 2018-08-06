@@ -13,7 +13,7 @@ module.exports = {
     INVESTIGATOR: '조사자',
     TYPES: ['Asset', 'Event', 'Skill', 'Treachery'],
     SUBTYPES: ['Weakness', 'Basic Weakness'],
-    SLOTS: ['Hand', 'Hand x2', 'Ally', 'Body', 'Vision', 'Vision x2', 'Accessory'],
+    SLOTS: ['Hand', 'Hand x2', 'Ally', 'Body', 'Arcane', 'Arcane x2', 'Accessory'],
     WILLPOWER: 'Willpower',
     COMBAT: 'Combat',
     INTELLECT: 'Intellect',
@@ -33,6 +33,10 @@ module.exports = {
     ELDERSIGN: 'Elder Sign',
     FASTACTION: 'Fast Action',
     ACTION: 'Action',
-    AUTOFAIL: 'Auto Fail'
+    AUTOFAIL: 'Auto Fail',
+    SKULL: 'Skull',
+    TABLET: 'Tablet',
+    CULTIST: 'Cultist',
+    ELDERTHING: 'Elder Thing'
   }
 }

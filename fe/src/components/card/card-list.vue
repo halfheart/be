@@ -9,6 +9,7 @@
         <td>
           <span class="font-icon icon-unique" v-if="cards.item.isUnique"></span>
           <card-popover :card="cards.item" :show-subname="true" my-style="py-2 pr-2" />
+          <span v-if="cards.item.xp">{{ `(${cards.item.xp})` }}</span>
         </td>
         <td><span v-html="factionIcons(cards.item.faction)"></span>{{ cards.item.faction }}</td>
         <td>{{ cards.item.cost }}</td>
@@ -156,6 +157,18 @@ export default {
 }
 .icon-autofail:before {
   content: "m"
+}
+.icon-skull:before {
+  content: "k"
+}
+.icon-cultist:before {
+  content: "l"
+}
+.icon-elderthing:before {
+  content: "n"
+}
+.icon-tablet:before {
+  content: "q"
 }
 .icon-wild:before {
   content: "?";

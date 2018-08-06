@@ -23,7 +23,11 @@ export default {
 
       str = str.replace(/\[reaction\]/gi, `<span class="font-icon icon-reaction" title="${this.$cfg.const.REACTION}"></span>`)
       str = str.replace(/\[action\]/gi, `<span class="font-icon icon-action" title="${this.$cfg.const.ACTION}"></span>`)
-      str = str.replace(/\[auto fail\]/gi, `<span class="font-icon icon-auto fail" title="${this.$cfg.const.AUTOFAIL}"></span>`)
+      str = str.replace(/\[auto fail\]/gi, `<span class="font-icon icon-autofail" title="${this.$cfg.const.AUTOFAIL}"></span>`)
+      str = str.replace(/\[skull\]/gi, `<span class="font-icon icon-skull" title="${this.$cfg.const.SKULL}"></span>`)
+      str = str.replace(/\[cultist\]/gi, `<span class="font-icon icon-cultist" title="${this.$cfg.const.CULTIST}"></span>`)
+      str = str.replace(/\[tablet\]/gi, `<span class="font-icon icon-tablet" title="${this.$cfg.const.TABLET}"></span>`)
+      str = str.replace(/\[elder thing\]/gi, `<span class="font-icon icon-elderthing" title="${this.$cfg.const.ELDERTHING}"></span>`)
       str = str.replace(/\[elder sign\]/gi, `<span class="font-icon icon-eldersign" title="${this.$cfg.const.ELDERSIGN}"></span>`)
       str = str.replace(/\[fast action\]/gi, `<span class="font-icon icon-fastaction" title="${this.$cfg.const.FASTACTION}"></span>`)
       str = str.replace(/\[combat\]/gi, `<span class="font-icon icon-combat" title="${this.$cfg.const.COMBAT}"></span>`)

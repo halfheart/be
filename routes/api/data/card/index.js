@@ -3,6 +3,7 @@ const ctrl = require('./ctrls');
 
 router.get('/list', ctrl.list);
 router.get('/filter', ctrl.filter);
+router.get('/deckSourceList', ctrl.deckSourceList);
 router.get('/', ctrl.card);
 router.post('/', ctrl.add);
 router.put('/', ctrl.mod);
