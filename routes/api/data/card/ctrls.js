@@ -12,7 +12,7 @@ exports.card = (req, res) => {
   .catch((err) => {
     res.send({ success: false, msg: err.message });
   });
-}
+};
 
 exports.deckSourceList = (req, res) => {
   let {
@@ -28,24 +28,40 @@ exports.deckSourceList = (req, res) => {
     draw: draw,
     array: []
   };
+  let q = {
+    $or: []
+  }
+  let nin = [];
 
-  let f = {}
-
-  Card.find(f)
-    .where('type').equals('조사자')
-    .select('deckRequirements')
+  Card.findOne().where('_id').equals(id)
+    .select('deckOption')
     .then((c) => {
-      let nin = []
+      c.deckOption.forEach((i) => {
+        q.$or.push({
+          $and: [
+            { faction: i.faction },
+            { xp: { $gte: i.min } },
+            { xp: { $lte: i.max } }
+          ]
+        });
+      });
 
+      console.log(JSON.stringify(q, undefined, 2));
+
+      return Card.find()
+        .where('type').equals('조사자')
+        .select('deckRequirements');
+    })
+    .then((c) => {
       c.forEach((i) => {
         i.deckRequirements.forEach((j) => {
           nin.push(j);
         });
       });
+      let query = Card.find(q).where('type').ne('조사자');
+      query = query.where('_id').nin(nin);
 
-      return Card.find(f)
-        .where('_id').nin(nin)
-        .where('type').ne('조사자');
+      return query;
     })
     .then((c) => {
       cards.array = c;
@@ -54,7 +70,7 @@ exports.deckSourceList = (req, res) => {
     .catch((err) => {
       res.send({ success: false, msg: err.message });
     });
-}
+};
 
 exports.list = (req, res) => {
   let {

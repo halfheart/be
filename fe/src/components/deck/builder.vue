@@ -1,17 +1,19 @@
 <template>
   <div>
     <p v-for="(i, index) in cards.array" :key="index">
-      {{ i.name }}
+      <span v-html="factionIcons(i.faction)"></span>{{ i.name }}<span v-if="i.xp">{{ `(${i.xp})` }}</span>
     </p>
   </div>
 </template>
 
 <script>
 import cardListMixin from '@/components/mixins/card-list-mixin'
+import replaceMixin from '@/components/mixins/replace-mixin'
 
 export default {
   mixins: [
-    cardListMixin
+    cardListMixin,
+    replaceMixin
   ],
   props: {
     id: { type: String, default: null }
