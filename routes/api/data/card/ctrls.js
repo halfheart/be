@@ -46,8 +46,6 @@ exports.deckSourceList = (req, res) => {
         });
       });
 
-      console.log(JSON.stringify(q, undefined, 2));
-
       return Card.find()
         .where('type').equals('조사자')
         .select('deckRequirements');
@@ -58,10 +56,11 @@ exports.deckSourceList = (req, res) => {
           nin.push(j);
         });
       });
-      let query = Card.find(q).where('type').ne('조사자');
-      query = query.where('_id').nin(nin);
 
-      return query;
+      return Card.find(q)
+        .where('type').ne('조사자')
+        .where('_id').nin(nin)
+        .populate('includedPack');
     })
     .then((c) => {
       cards.array = c;

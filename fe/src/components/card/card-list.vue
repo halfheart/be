@@ -41,12 +41,12 @@ import cardAdd from '@/components/card/card-add'
 import cardDel from '@/components/card/card-del'
 import investigatorMod from '@/components/card/investigator/investigator-mod'
 import playercardMod from '@/components/card/playercard/playercard-mod'
-import replaceMixin from '@/components/mixins/replace-mixin'
+import cardStyleMixin from '@/components/mixins/card-style-mixin'
 import cardListMixin from '@/components/mixins/card-list-mixin'
 
 export default {
   mixins: [
-    replaceMixin,
+    cardStyleMixin,
     cardListMixin
   ],
   components: {

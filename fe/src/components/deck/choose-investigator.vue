@@ -15,9 +15,16 @@
             <ul>
               <li>덱 사이즈: {{ i.deckSize }}장</li>
               <li v-for="(i, index) in i.deckRequirements" :key="index">
-                <card-popover :card="i" my-style="pr-2" />1장
+                <card-popover :card="i" my-style="pr-1" />1장
               </li>
               <li>랜덤 기본 약점 카드 1장</li>
+              <li>
+                <span v-for="j in i.deckOption">
+                  <span v-if="j.faction !== $cfg.const.FACTIONS[0]">
+                    <span v-html="factionIcons(j.faction)"></span>{{ `~${j.max}` }}
+                  </span>
+                </span>
+              </li>
             </ul>
           </v-card-text>
           <v-card-actions>
@@ -35,13 +42,15 @@
 <script>
 import cardPopover from '@/components/card/card-popover'
 import cardListMixin from '@/components/mixins/card-list-mixin'
+import cardStyleMixin from '@/components/mixins/card-style-mixin'
 
 export default {
   components: {
     cardPopover
   },
   mixins: [
-    cardListMixin
+    cardListMixin,
+    cardStyleMixin
   ],
   data () {
     return {
