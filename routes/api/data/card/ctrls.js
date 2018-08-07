@@ -61,6 +61,7 @@ exports.deckSourceList = (req, res) => {
       return Card.find(q)
         .where('type').ne('조사자')
         .where('_id').nin(nin)
+        .where('subtype').ne('Basic Weakness')
         .populate('includedPack');
     })
     .then((c) => {

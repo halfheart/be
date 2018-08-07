@@ -11,7 +11,7 @@
               <template v-for="(i, index) in deck">
                 <v-list-tile :key="index">
                   <v-list-tile-title>
-                    {{ `${i.qty} ` }}<span v-html="factionIcons(i.card.faction)"></span><span class="font-icon icon-unique" v-if="i.card.isUnique"></span>{{ `${i.card.name}` }}
+                    {{ `${i.qty}x ` }}<span v-html="factionIcons(i.card.faction)"></span><span class="font-icon icon-unique" v-if="i.card.isUnique"></span>{{ `${i.card.name}` }}
                     <template v-if="i.card.xp">
                       {{ `(${i.card.xp})` }}
                     </template>
@@ -19,6 +19,7 @@
                   <v-list-tile-content />
                   <v-list-tile-action>
                     <v-btn icon flat @click="removeFromDeck(i)" v-if="!isRequired(i._id)"><v-icon>remove</v-icon></v-btn>
+                    <v-btn icon flat @click="setBasicWeakness()" v-if="index === 0"><v-icon>shuffle</v-icon></v-btn>
                   </v-list-tile-action>
                 </v-list-tile>
               </template>
@@ -50,14 +51,14 @@ export default {
   data () {
     return {
       deck: [],
-      investigator: {
-        name: ''
-      }
+      investigator: { type: Object, default: null },
+      basicWeakness: []
     }
   },
   computed: {
     investigatorName: function () {
-      return this.investigator.name
+      if (this.investigator.name) return this.investigator.name
+      return ''
     },
     deckSize: function () {
       let size = 0
@@ -80,6 +81,15 @@ export default {
     setRequirements (investigator) {
       const requirements = investigator.deckRequirements
 
+      this.deck.push({
+        card: {
+          name: 'Random Basic Weakness'
+        },
+        _id: '',
+        qty: 1,
+        require: true
+      })
+
       requirements.forEach((i) => {
         this.deck.push({
           card: i,
@@ -99,10 +109,45 @@ export default {
         if (!res.data.success) throw new Error(res.data.msg)
         this.investigator = res.data.card
         this.setRequirements(this.investigator)
+        this.getBasicWeakness()
       })
       .catch((err) => {
         console.log(err.message)
       })
+    },
+    getBasicWeakness () {
+      this.$axios.get(`${this.$cfg.path.api}data/card/list`, {
+        params: {
+          draw: 1,
+          columns: ['subtype'],
+          searches: ['Basic Weakness'],
+          order: '_id',
+          sort: 1,
+          limit: 100,
+          skip: 0
+        }
+      })
+      .then((res) => {
+        if (!res.data.success) throw new Error(res.data.msg)
+        this.basicWeakness = res.data.cards.array
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+    },
+    setBasicWeakness () {
+      const weak = this.basicWeakness
+      const min = 0
+      const max = weak.length
+      const index = Math.floor(Math.random() * (max - min)) + min
+      this.deck.unshift({
+        card: weak[index],
+        _id: weak[index]._id,
+        qty: 1,
+        require: true
+      })
+
+      this.deck.splice(1, 1)
     },
     addToDeck (e) {
       const id = e._id
