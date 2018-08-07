@@ -6,6 +6,7 @@ exports.card = (req, res) => {
   console.log(_id);
 
   Card.findOne({ _id: _id })
+  .populate('deckRequirements')
   .then((r) => {
     res.send({ success: true, card: r });
   })

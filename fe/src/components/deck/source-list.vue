@@ -5,7 +5,7 @@
         <v-expansion-panel-content :key="index">
           <div slot="header">
             <v-btn icon flat @click="addToDeck($event, i)"><v-icon>add</v-icon></v-btn>
-            <span v-html="factionIcons(i.faction)"></span>{{ `${i.name} ` }}<span v-if="i.xp">{{ `(${i.xp})` }}</span>
+            <span v-html="factionIcons(i.faction)"></span><span class="font-icon icon-unique" v-if="i.isUnique"></span>{{ `${i.name} ` }}<span v-if="i.xp">{{ `(${i.xp})` }}</span>
           </div>
           <card-page :card="i" />
         </v-expansion-panel-content>
