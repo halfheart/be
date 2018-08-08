@@ -3,7 +3,6 @@ const Pack = require('../../../../models/packs');
 
 exports.card = (req, res) => {
   const { _id } = req.query;
-  console.log(_id);
 
   Card.findOne({ _id: _id })
   .populate('deckRequirements')
@@ -94,8 +93,6 @@ exports.list = (req, res) => {
   limit = parseInt(limit);
   sort = parseInt(sort);
   query = JSON.parse(query);
-
-  console.log(query);
 
   let cards = {
     cnt: 0,

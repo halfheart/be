@@ -3,17 +3,17 @@
     <v-layout row wrap>
       <v-flex md6>
         <v-card>
-          <v-card-title>
-          {{ investigatorName }}  Deck ({{ deckSize }}/{{ deckLimit }})
+          <v-card-title class="builder-title">
+          {{ `${investigatorName} Deck` }}<span :class="{ danger: !deckValidate }">{{ `(${deckSize}/${deckLimit})` }}</span>
           <v-spacer />
-          <v-btn :disabled="!deckValidate" @click="submit()">submit</v-btn>
+          <v-btn :disabled="!deckValidate || pending" @click="submit()">submit</v-btn>
           </v-card-title>
           <v-card-text>
-            <v-list class="deck-builder">
+            <v-list class="deck-builder" dense>
               <template v-for="(s, index) in subheaders">
                 <v-subheader v-if="haveContents(s)">{{ s.name }}</v-subheader>
                 <template v-for="(i, index) in deck">
-                  <v-list-tile :key="index" v-if="s.value(i)">
+                  <v-list-tile :key="index" v-if="s.value(i)" @click="">
                     <v-list-tile-title>
                       {{ `${i.qty}x ` }}<span v-html="factionIcons(i.card.faction)"></span><span class="font-icon icon-unique" v-if="i.card.isUnique"></span>{{ `${i.card.name}` }}
                       <template v-if="i.card.xp">
@@ -39,6 +39,12 @@
   </v-container>
 </template>
 
+<style>
+.builder-title .danger {
+  color: #ff0000
+}
+</style>
+
 <script>
 import sourceList from '@/components/deck/source-list'
 import cardStyleMixin from '@/components/mixins/card-style-mixin'
@@ -61,6 +67,7 @@ export default {
       investigator: { type: Object, default: null },
       basicWeakness: [],
       requirements: 0,
+      pending: false,
       subheaders: [
         {
           name: 'Deck requirements',
@@ -109,7 +116,21 @@ export default {
   },
   methods: {
     submit () {
-      console.log('등록됨')
+      this.pending = true
+      this.$axios.post(`${this.$cfg.path.api}data/deck`, {
+        name: `${this.investigatorName} Deck`,
+        investigator: this.investigator,
+        cards: this.deck
+      })
+      .then((res) => {
+        if (!res.data.success) throw new Error(res.data.msg)
+        const id = res.data.id
+        this.$router.push({ name: 'deck', query: { id: id } })
+      })
+      .catch((err) => {
+        console.log(err.message)
+        this.pending = false
+      })
     },
     haveContents (subheader) {
       let contents = 0
