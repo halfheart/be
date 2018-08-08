@@ -37,10 +37,12 @@
 <script>
 import sourceList from '@/components/deck/source-list'
 import cardStyleMixin from '@/components/mixins/card-style-mixin'
+import cardListMixin from '@/components/mixins/card-list-mixin'
 
 export default {
   mixins: [
-    cardStyleMixin
+    cardStyleMixin,
+    cardListMixin
   ],
   components: {
     sourceList
@@ -52,7 +54,8 @@ export default {
     return {
       deck: [],
       investigator: { type: Object, default: null },
-      basicWeakness: []
+      basicWeakness: [],
+      requirements: 0
     }
   },
   computed: {
@@ -61,7 +64,7 @@ export default {
       return ''
     },
     deckSize: function () {
-      let size = 0
+      let size = 0 - this.requirements
       this.deck.forEach((i) => {
         size += i.qty
       })
@@ -81,7 +84,7 @@ export default {
     setRequirements (investigator) {
       const requirements = investigator.deckRequirements
 
-      this.deck.push({
+      this.requirements = this.deck.push({
         card: {
           name: 'Random Basic Weakness'
         },
@@ -91,7 +94,7 @@ export default {
       })
 
       requirements.forEach((i) => {
-        this.deck.push({
+        this.requirements = this.deck.push({
           card: i,
           _id: i._id,
           qty: 1,
@@ -100,11 +103,7 @@ export default {
       })
     },
     getInvestigator (id) {
-      this.$axios.get(`${this.$cfg.path.api}data/card`, {
-        params: {
-          _id: id
-        }
-      })
+      this.getCard(id)
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)
         this.investigator = res.data.card
@@ -116,15 +115,13 @@ export default {
       })
     },
     getBasicWeakness () {
-      this.$axios.get(`${this.$cfg.path.api}data/card/list`, {
-        params: {
-          draw: 1,
-          columns: ['subtype'],
-          searches: ['Basic Weakness'],
-          order: '_id',
-          sort: 1,
-          limit: 100,
-          skip: 0
+      this.getCardList({
+        draw: 0,
+        order: '_id',
+        sort: 1,
+        limit: 0,
+        query: {
+          subtype: 'Basic Weakness'
         }
       })
       .then((res) => {

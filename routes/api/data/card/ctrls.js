@@ -80,8 +80,7 @@ exports.list = (req, res) => {
     limit,
     sort,
     order,
-    searches,
-    columns
+    query
   } = req.query;
 
   if (draw === undefined) res.send({ success: false, msg: 'params err draw' });
@@ -89,12 +88,14 @@ exports.list = (req, res) => {
   if (limit === undefined) res.send({ success: false, msg: 'params err limit' });
   if (sort === undefined) res.send({ success: false, msg: 'params err sort' });
   if (order === undefined) res.send({ success: false, msg: 'params err order' });
-  if (columns === undefined) res.send({ success: false, msg: 'params err columns' });
-  if (searches === undefined) res.send({ success: false, msg: 'params err searches' });
+  if (query === undefined) res.send({ success: false, msg: 'params err query' });
 
   skip = parseInt(skip);
   limit = parseInt(limit);
   sort = parseInt(sort);
+  query = JSON.parse(query);
+
+  console.log(query);
 
   let cards = {
     cnt: 0,
@@ -102,16 +103,12 @@ exports.list = (req, res) => {
     array: []
   };
 
-  let f = {};
-
-  Card.count(f)
-    .where(columns[0]).regex(searches[0])
+  Card.count(query)
     .then((c) => {
       cards.cnt = c;
       let s = {};
       s[order] = sort;
-      return Card.find(f)
-      .where(columns[0]).regex(searches[0])
+      return Card.find(query)
       .populate('includedPack')
       .populate({
         path: 'deckRequirements',

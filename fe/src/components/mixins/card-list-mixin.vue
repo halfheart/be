@@ -14,12 +14,10 @@ export default {
       p: {
         page: 1,
         draw: 0,
-        columns: ['name'],
-        searches: [''],
         order: '_id',
         sort: 1,
-        skip: 0,
-        limit: 20
+        limit: 20,
+        query: {}
       }
     }
   },
@@ -31,25 +29,29 @@ export default {
     }
   },
   methods: {
-    list () {
-      this.$axios.get(`${this.$cfg.path.api}data/card/list`, {
+    async getCard (id) {
+      const res = await this.$axios.get(`${this.$cfg.path.api}data/card`, {
+        params: {
+          _id: id
+        }
+      })
+
+      return res
+    },
+    async getCardList (params) {
+      if (params) this.p = params
+      const res = await this.$axios.get(`${this.$cfg.path.api}data/card/list`, {
         params: {
           draw: this.p.draw + 1,
-          columns: this.p.columns,
-          searches: this.p.searches,
           order: this.p.order,
           sort: this.p.sort,
           limit: this.p.limit,
-          skip: this.setSkip
+          skip: this.setSkip,
+          query: this.p.query
         }
       })
-      .then((res) => {
-        if (!res.data.success) throw new Error(res.data.msg)
-        this.cards = res.data.cards
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
+
+      return res
     }
   }
 }

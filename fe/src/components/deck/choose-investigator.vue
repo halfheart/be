@@ -57,12 +57,12 @@ export default {
       p: {
         page: 1,
         draw: 0,
-        columns: ['type'],
-        searches: [this.$cfg.const.INVESTIGATOR],
         order: 'number',
         sort: 1,
-        skip: 0,
-        limit: 100
+        limit: 0,
+        query: {
+          type: this.$cfg.const.INVESTIGATOR
+        }
       }
     }
   },
@@ -78,6 +78,16 @@ export default {
       result += '...'
 
       return result
+    },
+    list () {
+      this.getCardList(this.p)
+      .then((res) => {
+        if (!res.data.success) throw new Error(res.data.msg)
+        this.cards = res.data.cards
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
     }
   },
   mounted () {

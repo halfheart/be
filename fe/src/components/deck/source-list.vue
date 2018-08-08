@@ -63,14 +63,14 @@ export default {
     }
   },
   mounted () {
-    this.list()
+    this.getList()
   },
   methods: {
     addToDeck (e, i) {
       e.stopPropagation()
       this.$emit('add', i)
     },
-    list () {
+    getList () {
       this.$axios.get(`${this.$cfg.path.api}data/card/deckSourceList`, {
         params: {
           id: this.id,
