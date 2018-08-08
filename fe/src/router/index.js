@@ -40,7 +40,7 @@ export default new Router({
     },
     {
       path: '/deck/list',
-      name: 'deck-list',
+      name: 'deckList',
       component: deckList
     },
     {

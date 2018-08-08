@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import cardListMixin from '../../mixins/card-list-mixin'
+import cardListMixin from '@/components/mixins/card-list-mixin'
 
 export default {
   mixins: [

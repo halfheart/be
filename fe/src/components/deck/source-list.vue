@@ -1,6 +1,7 @@
 <template>
   <v-card>
-    <v-expansion-panel class="source-list">
+    <now-loading :show="show" />
+    <v-expansion-panel class="source-list" v-if="show">
       <template v-for="(i, index) in cards.array">
         <v-expansion-panel-content :key="index">
           <div slot="header">
@@ -42,6 +43,7 @@
 </style>
 
 <script>
+import nowLoading from '@/components/now-loading'
 import cardListMixin from '@/components/mixins/card-list-mixin'
 import cardStyleMixin from '@/components/mixins/card-style-mixin'
 import cardPage from '@/components/card/card-page'
@@ -52,14 +54,15 @@ export default {
     cardStyleMixin
   ],
   components: {
-    cardPage
+    cardPage,
+    nowLoading
   },
   props: {
     id: { type: String, default: null }
   },
   data () {
     return {
-
+      show: false
     }
   },
   mounted () {
@@ -80,6 +83,7 @@ export default {
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)
         this.cards = res.data.cards
+        this.show = true
       })
       .catch((err) => {
         console.log(err.message)

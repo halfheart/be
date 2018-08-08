@@ -64,6 +64,24 @@ exports.list = (req, res) => {
   });
 }
 
+exports.del = (req, res) => {
+  const { _id } = req.query;
+
+  if (_id === undefined) res.send({ success: false, msg: 'params err id' });
+
+  Deck.findOne({ _id: _id })
+  .then((r) => {
+    if (!r) throw new Error('Deck not exists');
+    return Deck.remove({ _id: _id });
+  })
+  .then(() => {
+    res.send({ success: true });
+  })
+  .catch((err) => {
+    res.send({ success: false, msg: err.message });
+  });
+}
+
 exports.add = (req, res) => {
   const {
     name,

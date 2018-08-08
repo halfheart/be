@@ -1,13 +1,7 @@
 <template>
   <v-card>
     <v-container grid-list-md>
-      <v-layout align-center justify-center fill-height v-if="!show">
-        <v-progress-circular
-          :size="70"
-          :width="7"
-          indeterminate
-        ></v-progress-circular>
-      </v-layout>
+      <now-loading :show="show" />
       <v-fade-transition>
         <v-form ref="form" v-if="show">
           <v-container>
@@ -142,7 +136,12 @@
 </template>
 
 <script>
+import nowLoading from '@/components/now-loading'
+
 export default {
+  components: {
+    nowLoading
+  },
   props: {
     title: { type: String, default: '' },
     mode: { type: String, default: '' }

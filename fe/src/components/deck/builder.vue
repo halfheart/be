@@ -3,33 +3,36 @@
     <v-layout row wrap>
       <v-flex md6>
         <v-card>
-          <v-card-title class="builder-title">
-          {{ `${deck.investigatorName} Deck` }}<span :class="{ danger: !deckValidate }">{{ `(${deckSize}/${deckLimit})` }}</span>
-          <v-spacer />
-          <v-btn :disabled="!deckValidate || pending" @click="submit()">submit</v-btn>
-          </v-card-title>
-          <v-card-text>
-            <v-list class="deck-builder" dense>
-              <template v-for="(s, index) in subheaders">
-                <v-subheader v-if="haveContents(s)">{{ s.name }}</v-subheader>
-                <template v-for="(i, index) in deck.cards">
-                  <v-list-tile :key="index" v-if="s.value(i)" @click="">
-                    <v-list-tile-title>
-                      {{ `${i.qty}x ` }}<span v-html="factionIcons(i.card.faction)"></span><span class="font-icon icon-unique" v-if="i.card.isUnique"></span>{{ `${i.card.name}` }}
-                      <template v-if="i.card.xp">
-                        {{ `(${i.card.xp})` }}
-                      </template>
-                    </v-list-tile-title>
-                    <v-list-tile-content />
-                    <v-list-tile-action>
-                      <v-btn icon flat @click="removeFromDeck(i)" v-if="!isRequired(i._id)"><v-icon>remove</v-icon></v-btn>
-                      <v-btn icon flat @click="setBasicWeakness()" v-if="index === 0"><v-icon>shuffle</v-icon></v-btn>
-                    </v-list-tile-action>
-                  </v-list-tile>
+          <now-loading :show="show" />
+          <template v-if="show">
+            <v-card-title class="builder-title">
+            {{ `${investigatorName} Deck` }}<span :class="{ danger: !deckValidate }">{{ `(${deckSize}/${deckLimit})` }}</span>
+            <v-spacer />
+            <v-btn :disabled="!deckValidate || pending" @click="submit()">submit</v-btn>
+            </v-card-title>
+            <v-card-text>
+              <v-list class="deck-builder" dense>
+                <template v-for="(s, index) in subheaders">
+                  <v-subheader v-if="haveContents(s)">{{ s.name }}</v-subheader>
+                  <template v-for="(i, index) in deck.cards">
+                    <v-list-tile :key="index" v-if="s.value(i)" @click="">
+                      <v-list-tile-title>
+                        {{ `${i.qty}x ` }}<span v-html="factionIcons(i.card.faction)"></span><span class="font-icon icon-unique" v-if="i.card.isUnique"></span>{{ `${i.card.name}` }}
+                        <template v-if="i.card.xp">
+                          {{ `(${i.card.xp})` }}
+                        </template>
+                      </v-list-tile-title>
+                      <v-list-tile-content />
+                      <v-list-tile-action>
+                        <v-btn icon flat @click="removeFromDeck(i)" v-if="!isRequired(i._id)"><v-icon>remove</v-icon></v-btn>
+                        <v-btn icon flat @click="setBasicWeakness()" v-if="index === 0"><v-icon>shuffle</v-icon></v-btn>
+                      </v-list-tile-action>
+                    </v-list-tile>
+                  </template>
                 </template>
-              </template>
-            </v-list>
-          </v-card-text>
+              </v-list>
+            </v-card-text>
+          </template>
         </v-card>
       </v-flex>
       <v-flex md6>
@@ -46,10 +49,11 @@
 </style>
 
 <script>
+import nowLoading from '@/components/now-loading'
 import sourceList from '@/components/deck/source-list'
 import cardStyleMixin from '@/components/mixins/card-style-mixin'
 import cardListMixin from '@/components/mixins/card-list-mixin'
-import deckMixin from './mixins/deck-mixin'
+import deckMixin from '@/components/deck/mixins/deck-mixin'
 
 export default {
   mixins: [
@@ -58,7 +62,8 @@ export default {
     deckMixin
   ],
   components: {
-    sourceList
+    sourceList,
+    nowLoading
   },
   props: {
     id: { type: String, default: null }
@@ -66,7 +71,8 @@ export default {
   data () {
     return {
       requirements: 0,
-      pending: false
+      pending: false,
+      show: false
     }
   },
   computed: {
@@ -146,6 +152,7 @@ export default {
         this.deck.investigator = res.data.card
         this.setRequirements(this.deck.investigator)
         this.getBasicWeakness()
+        this.show = true
       })
       .catch((err) => {
         console.log(err.message)
