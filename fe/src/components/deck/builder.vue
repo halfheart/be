@@ -4,7 +4,7 @@
       <v-flex md6>
         <v-card>
           <v-card-title class="builder-title">
-          {{ `${investigatorName} Deck` }}<span :class="{ danger: !deckValidate }">{{ `(${deckSize}/${deckLimit})` }}</span>
+          {{ `${deck.investigatorName} Deck` }}<span :class="{ danger: !deckValidate }">{{ `(${deckSize}/${deckLimit})` }}</span>
           <v-spacer />
           <v-btn :disabled="!deckValidate || pending" @click="submit()">submit</v-btn>
           </v-card-title>
@@ -12,7 +12,7 @@
             <v-list class="deck-builder" dense>
               <template v-for="(s, index) in subheaders">
                 <v-subheader v-if="haveContents(s)">{{ s.name }}</v-subheader>
-                <template v-for="(i, index) in deck">
+                <template v-for="(i, index) in deck.cards">
                   <v-list-tile :key="index" v-if="s.value(i)" @click="">
                     <v-list-tile-title>
                       {{ `${i.qty}x ` }}<span v-html="factionIcons(i.card.faction)"></span><span class="font-icon icon-unique" v-if="i.card.isUnique"></span>{{ `${i.card.name}` }}
@@ -49,11 +49,13 @@
 import sourceList from '@/components/deck/source-list'
 import cardStyleMixin from '@/components/mixins/card-style-mixin'
 import cardListMixin from '@/components/mixins/card-list-mixin'
+import deckMixin from './mixins/deck-mixin'
 
 export default {
   mixins: [
     cardStyleMixin,
-    cardListMixin
+    cardListMixin,
+    deckMixin
   ],
   components: {
     sourceList
@@ -63,46 +65,25 @@ export default {
   },
   data () {
     return {
-      deck: [],
-      investigator: { type: Object, default: null },
-      basicWeakness: [],
       requirements: 0,
-      pending: false,
-      subheaders: [
-        {
-          name: 'Deck requirements',
-          value: (value) => { return value.require === true }
-        },
-        {
-          name: this.$cfg.const.TYPES[0],
-          value: (value) => { return value.card.type === this.$cfg.const.TYPES[0] && value.require === false }
-        },
-        {
-          name: this.$cfg.const.TYPES[1],
-          value: (value) => { return value.card.type === this.$cfg.const.TYPES[1] && value.require === false }
-        },
-        {
-          name: this.$cfg.const.TYPES[2],
-          value: (value) => { return value.card.type === this.$cfg.const.TYPES[2] && value.require === false }
-        }
-      ]
+      pending: false
     }
   },
   computed: {
     investigatorName: function () {
-      if (this.investigator.name) return this.investigator.name
+      if (this.deck.investigator.name) return this.deck.investigator.name
       return ''
     },
     deckSize: function () {
       let size = 0 - this.requirements
-      this.deck.forEach((i) => {
+      this.deck.cards.forEach((i) => {
         size += i.qty
       })
 
       return size
     },
     deckLimit: function () {
-      if (this.investigator.deckSize) return this.investigator.deckSize
+      if (this.deck.investigator.deckSize) return this.deck.investigator.deckSize
       return 0
     },
     deckValidate: function () {
@@ -119,8 +100,8 @@ export default {
       this.pending = true
       this.$axios.post(`${this.$cfg.path.api}data/deck`, {
         name: `${this.investigatorName} Deck`,
-        investigator: this.investigator,
-        cards: this.deck
+        investigator: this.deck.investigator,
+        cards: this.deck.cards
       })
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)
@@ -132,24 +113,15 @@ export default {
         this.pending = false
       })
     },
-    haveContents (subheader) {
-      let contents = 0
-      this.deck.forEach((i) => {
-        if (subheader.value(i)) contents++
-      })
-
-      if (contents > 0) return true
-      return false
-    },
     isRequired (id) {
       const index = this.indexOfCard(id)
 
-      return this.deck[index].require
+      return this.deck.cards[index].require
     },
     setRequirements (investigator) {
       const requirements = investigator.deckRequirements
 
-      this.requirements = this.deck.push({
+      this.requirements = this.deck.cards.push({
         card: {
           name: 'Random Basic Weakness'
         },
@@ -159,7 +131,7 @@ export default {
       })
 
       requirements.forEach((i) => {
-        this.requirements = this.deck.push({
+        this.requirements = this.deck.cards.push({
           card: i,
           _id: i._id,
           qty: 1,
@@ -171,50 +143,18 @@ export default {
       this.getCard(id)
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)
-        this.investigator = res.data.card
-        this.setRequirements(this.investigator)
+        this.deck.investigator = res.data.card
+        this.setRequirements(this.deck.investigator)
         this.getBasicWeakness()
       })
       .catch((err) => {
         console.log(err.message)
       })
     },
-    getBasicWeakness () {
-      this.getCardList({
-        draw: 0,
-        order: '_id',
-        sort: 1,
-        limit: 0,
-        query: {
-          subtype: 'Basic Weakness'
-        }
-      })
-      .then((res) => {
-        if (!res.data.success) throw new Error(res.data.msg)
-        this.basicWeakness = res.data.cards.array
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-    },
-    setBasicWeakness () {
-      const weak = this.basicWeakness
-      const min = 0
-      const max = weak.length
-      const index = Math.floor(Math.random() * (max - min)) + min
-      this.deck.unshift({
-        card: weak[index],
-        _id: weak[index]._id,
-        qty: 1,
-        require: true
-      })
-
-      this.deck.splice(1, 1)
-    },
     addToDeck (e) {
       const id = e._id
       if (!this.isExist(id) && !this.isFull(e.name)) {
-        this.deck.push({
+        this.deck.cards.push({
           card: e,
           _id: id,
           qty: 1,
@@ -222,22 +162,22 @@ export default {
         })
       } else if (this.isExist(id) && !e.isUnique && !this.isFull(e.name)) {
         const index = this.indexOfCard(id)
-        this.deck[index].qty += 1
+        this.deck.cards[index].qty += 1
       }
     },
     removeFromDeck (i) {
       const id = i._id
       const index = this.indexOfCard(id)
-      let card = this.deck[index]
+      let card = this.deck.cards[index]
 
       if (card.qty === 1) {
-        this.deck.splice(index, 1)
+        this.deck.cards.splice(index, 1)
       } else {
         card.qty -= 1
       }
     },
     isExist (id) {
-      let result = this.deck.filter((i) => {
+      let result = this.deck.cards.filter((i) => {
         return i._id === id
       })
 
@@ -246,7 +186,7 @@ export default {
     },
     isFull (name) {
       let qty = 0
-      this.deck.forEach((i) => {
+      this.deck.cards.forEach((i) => {
         if (i.card.name === name) {
           qty += i.qty
         }
@@ -256,7 +196,7 @@ export default {
       return false
     },
     indexOfCard (id) {
-      const index = this.deck.findIndex((i) => {
+      const index = this.deck.cards.findIndex((i) => {
         return i._id === id
       })
 

@@ -9,7 +9,7 @@
           <v-card-text>
             <v-list class="deck-builder" dense>
               <template v-for="(s, index) in subheaders">
-                <v-subheader>{{ s.name }}</v-subheader>
+                <v-subheader v-if="haveContents(s)">{{ s.name }}</v-subheader>
                 <template v-for="(i, index) in deck.cards">
                   <v-list-tile :key="index" v-if="s.value(i)" @click="">
                     <v-list-tile-title>
@@ -39,77 +39,23 @@
 <script>
 import cardStyleMixin from '@/components/mixins/card-style-mixin'
 import cardListMixin from '@/components/mixins/card-list-mixin'
+import deckMixin from './mixins/deck-mixin'
 
 export default {
   mixins: [
     cardStyleMixin,
-    cardListMixin
+    cardListMixin,
+    deckMixin
   ],
   props: {
     id: { type: String, default: '' }
   },
   data () {
     return {
-      deck: {
-        name: '',
-        investigator: null,
-        cards: [],
-        ut: ''
-      },
-      basicWeakness: [],
-      subheaders: [
-        {
-          name: 'Deck requirements',
-          value: (value) => { return value.require === true }
-        },
-        {
-          name: this.$cfg.const.TYPES[0],
-          value: (value) => { return value.card.type === this.$cfg.const.TYPES[0] && value.require === false }
-        },
-        {
-          name: this.$cfg.const.TYPES[1],
-          value: (value) => { return value.card.type === this.$cfg.const.TYPES[1] && value.require === false }
-        },
-        {
-          name: this.$cfg.const.TYPES[2],
-          value: (value) => { return value.card.type === this.$cfg.const.TYPES[2] && value.require === false }
-        }
-      ]
+
     }
   },
   methods: {
-    getBasicWeakness () {
-      this.getCardList({
-        draw: 0,
-        order: '_id',
-        sort: 1,
-        limit: 0,
-        query: {
-          subtype: 'Basic Weakness'
-        }
-      })
-      .then((res) => {
-        if (!res.data.success) throw new Error(res.data.msg)
-        this.basicWeakness = res.data.cards.array
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-    },
-    setBasicWeakness () {
-      const weak = this.basicWeakness
-      const min = 0
-      const max = weak.length
-      const index = Math.floor(Math.random() * (max - min)) + min
-      this.deck.cards.unshift({
-        card: weak[index],
-        _id: weak[index]._id,
-        qty: 1,
-        require: true
-      })
-
-      this.deck.cards.splice(1, 1)
-    },
     getDeck (id) {
       this.$axios.get(`${this.$cfg.path.api}data/deck`, {
         params: {
