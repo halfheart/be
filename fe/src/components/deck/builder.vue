@@ -4,24 +4,29 @@
       <v-flex md6>
         <v-card>
           <v-card-title>
-          {{ investigatorName }}  Deck ({{ deckSize }})
+          {{ investigatorName }}  Deck ({{ deckSize }}/{{ deckLimit }})
+          <v-spacer />
+          <v-btn :disabled="!deckValidate" @click="submit()">submit</v-btn>
           </v-card-title>
           <v-card-text>
             <v-list class="deck-builder">
-              <template v-for="(i, index) in deck">
-                <v-list-tile :key="index">
-                  <v-list-tile-title>
-                    {{ `${i.qty}x ` }}<span v-html="factionIcons(i.card.faction)"></span><span class="font-icon icon-unique" v-if="i.card.isUnique"></span>{{ `${i.card.name}` }}
-                    <template v-if="i.card.xp">
-                      {{ `(${i.card.xp})` }}
-                    </template>
-                  </v-list-tile-title>
-                  <v-list-tile-content />
-                  <v-list-tile-action>
-                    <v-btn icon flat @click="removeFromDeck(i)" v-if="!isRequired(i._id)"><v-icon>remove</v-icon></v-btn>
-                    <v-btn icon flat @click="setBasicWeakness()" v-if="index === 0"><v-icon>shuffle</v-icon></v-btn>
-                  </v-list-tile-action>
-                </v-list-tile>
+              <template v-for="(s, index) in subheaders">
+                <v-subheader v-if="haveContents(s)">{{ s.name }}</v-subheader>
+                <template v-for="(i, index) in deck">
+                  <v-list-tile :key="index" v-if="s.value(i)">
+                    <v-list-tile-title>
+                      {{ `${i.qty}x ` }}<span v-html="factionIcons(i.card.faction)"></span><span class="font-icon icon-unique" v-if="i.card.isUnique"></span>{{ `${i.card.name}` }}
+                      <template v-if="i.card.xp">
+                        {{ `(${i.card.xp})` }}
+                      </template>
+                    </v-list-tile-title>
+                    <v-list-tile-content />
+                    <v-list-tile-action>
+                      <v-btn icon flat @click="removeFromDeck(i)" v-if="!isRequired(i._id)"><v-icon>remove</v-icon></v-btn>
+                      <v-btn icon flat @click="setBasicWeakness()" v-if="index === 0"><v-icon>shuffle</v-icon></v-btn>
+                    </v-list-tile-action>
+                  </v-list-tile>
+                </template>
               </template>
             </v-list>
           </v-card-text>
@@ -55,7 +60,25 @@ export default {
       deck: [],
       investigator: { type: Object, default: null },
       basicWeakness: [],
-      requirements: 0
+      requirements: 0,
+      subheaders: [
+        {
+          name: 'Deck requirements',
+          value: (value) => { return value.require === true }
+        },
+        {
+          name: this.$cfg.const.TYPES[0],
+          value: (value) => { return value.card.type === this.$cfg.const.TYPES[0] && value.require === false }
+        },
+        {
+          name: this.$cfg.const.TYPES[1],
+          value: (value) => { return value.card.type === this.$cfg.const.TYPES[1] && value.require === false }
+        },
+        {
+          name: this.$cfg.const.TYPES[2],
+          value: (value) => { return value.card.type === this.$cfg.const.TYPES[2] && value.require === false }
+        }
+      ]
     }
   },
   computed: {
@@ -70,12 +93,33 @@ export default {
       })
 
       return size
+    },
+    deckLimit: function () {
+      if (this.investigator.deckSize) return this.investigator.deckSize
+      return 0
+    },
+    deckValidate: function () {
+      if (this.deckLimit === 0) return false
+      if (this.deckSize >= this.deckLimit) return true
+      return false
     }
   },
   mounted () {
     this.getInvestigator(this.id)
   },
   methods: {
+    submit () {
+      console.log('등록됨')
+    },
+    haveContents (subheader) {
+      let contents = 0
+      this.deck.forEach((i) => {
+        if (subheader.value(i)) contents++
+      })
+
+      if (contents > 0) return true
+      return false
+    },
     isRequired (id) {
       const index = this.indexOfCard(id)
 
