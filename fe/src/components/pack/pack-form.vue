@@ -33,7 +33,11 @@
 </template>
 
 <script>
+import nowLoading from '@/components/now-loading'
 export default {
+  components: {
+    nowLoading
+  },
   props: {
     title: { type: String, default: '' },
     mode: { type: String, default: '' }

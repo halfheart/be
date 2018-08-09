@@ -108,6 +108,10 @@ export default {
       return this.deck.cards[index].require
     },
     getInvestigator (id) {
+      if (!this.id) {
+        console.log('잘못된 접근')
+        return this.$router.push({ name: 'chooseInvestigator' })
+      }
       this.getCard(id)
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)

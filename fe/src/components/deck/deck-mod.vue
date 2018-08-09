@@ -79,6 +79,10 @@ export default {
       // Overriding NOP
     },
     getDeck (id) {
+      if (!this.id) {
+        console.log('잘못된 접근')
+        return this.$router.push({ name: 'chooseInvestigator' })
+      }
       this.$axios.get(`${this.$cfg.path.api}data/deck`, {
         params: {
           id: id

@@ -31,8 +31,7 @@ export default new Router({
       name: 'deck-mod',
       component: deckMod,
       props: (route) => ({
-        id: route.query.id,
-        invId: route.query.invId
+        id: route.query.id
       })
     },
     {
@@ -54,12 +53,12 @@ export default new Router({
       component: deckList
     },
     {
-      path: '/packlist',
+      path: '/pack/list',
       name: 'packlist',
       component: packList
     },
     {
-      path: '/cardlist',
+      path: '/card/list',
       name: 'cardlist',
       component: cardList
     }

@@ -114,6 +114,10 @@ export default {
       this.$router.push({ name: 'deck-mod', query: { id: this.id, invId: this.deck.investigator.id } })
     },
     getDeck (id) {
+      if (!this.id) {
+        console.log('잘못된 접근')
+        return this.$router.push({ name: 'chooseInvestigator' })
+      }
       this.$axios.get(`${this.$cfg.path.api}data/deck`, {
         params: {
           id: id
