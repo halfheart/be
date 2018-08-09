@@ -34,3 +34,7 @@ module.exports = {
 Then, mongoose install sample data. It takes few seconds. You can check this `Core Set created` and `Sample cards created` message in console.
 7. Run frontend server: `cd fe` `npm run dev`
 Then, you can check this http://localhost:8080/#/cardlist, packlist, deck/new
+
+## Demo video
+
+https://youtu.be/Fl5XDeSaNnw
