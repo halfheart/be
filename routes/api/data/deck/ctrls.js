@@ -82,6 +82,45 @@ exports.del = (req, res) => {
   });
 }
 
+exports.mod = (req, res) => {
+  const {
+    _id,
+    name,
+    investigator,
+    cards
+  } = req.body;
+
+  if (!name) res.send({ success: false, msg: 'params err name' });
+  if (!investigator) res.send({ success: false, msg: 'params err investigator' });
+
+  let cardArray = [];
+
+  cards.forEach((i, index) => {
+    if (index === 0) return
+    cardArray.push({
+      card: i.card._id,
+      qty: i.qty,
+      require: i.require
+    });
+  });
+
+  const o = { _id: _id };
+  const modedDeck = {
+    _id: _id,
+    name: name,
+    investigator: investigator._id,
+    cards: cardArray
+  };
+
+  Deck.findOneAndUpdate(o, modedDeck)
+  .then((r) => {
+    res.send({ success: true, id: r.id });
+  })
+  .catch((err) => {
+    res.send({ success: false, msg: err.message });
+  });
+}
+
 exports.add = (req, res) => {
   const {
     name,
@@ -93,12 +132,12 @@ exports.add = (req, res) => {
   if (!investigator) res.send({ success: false, msg: 'params err investigator'});
 
   let investigatorId = investigator._id
-  let cardsArray = []
+  let cardArray = []
 
   cards.forEach((i, index) => {
     if (index === 0) return
-    cardsArray.push({
-      card: i._id,
+    cardArray.push({
+      card: i.card._id,
       qty: i.qty,
       require: i.require
     });
@@ -107,7 +146,7 @@ exports.add = (req, res) => {
   const addedDeck = new Deck({
     name: name,
     investigator: investigatorId,
-    cards: cardsArray
+    cards: cardArray
   });
 
   addedDeck.save()

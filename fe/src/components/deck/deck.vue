@@ -6,8 +6,9 @@
           <now-loading :show="show" />
           <template v-if="show">
             <v-card-title>
-              {{ deck.name }}
+              {{ `${deck.name} (${deckSize})` }}
               <v-spacer />
+              <v-btn icon flat @click="mod()"><v-icon>edit</v-icon></v-btn>
               <deck-del :id="id" />
             </v-card-title>
             <v-card-text>
@@ -46,13 +47,11 @@ import deckDel from '@/components/deck/deck-del'
 import nowLoading from '@/components/now-loading'
 import cardStyleMixin from '@/components/mixins/card-style-mixin'
 import cardListMixin from '@/components/mixins/card-list-mixin'
-import deckMixin from '@/components/deck/mixins/deck-mixin'
 
 export default {
   mixins: [
     cardStyleMixin,
-    cardListMixin,
-    deckMixin
+    cardListMixin
   ],
   components: {
     nowLoading,
@@ -63,10 +62,57 @@ export default {
   },
   data () {
     return {
-      show: false
+      show: false,
+      basicWeakness: [],
+      deck: {
+        name: '',
+        investigator: {},
+        cards: [],
+        ut: ''
+      },
+      rbw: {
+        card: {
+          _id: '',
+          name: 'Random Basic Weakness',
+          faction: '',
+          type: ''
+        },
+        qty: 1,
+        require: true
+      },
+      subheaders: [
+        {
+          name: 'Deck requirements',
+          value: (value) => { return value.require === true }
+        },
+        {
+          name: this.$cfg.const.TYPES[0],
+          value: (value) => { return value.card.type === this.$cfg.const.TYPES[0] && value.require === false }
+        },
+        {
+          name: this.$cfg.const.TYPES[1],
+          value: (value) => { return value.card.type === this.$cfg.const.TYPES[1] && value.require === false }
+        },
+        {
+          name: this.$cfg.const.TYPES[2],
+          value: (value) => { return value.card.type === this.$cfg.const.TYPES[2] && value.require === false }
+        }
+      ]
+    }
+  },
+  computed: {
+    deckSize: function () {
+      let size = 0
+      this.deck.cards.forEach((i) => {
+        if (!i.require) size += i.qty
+      })
+      return size
     }
   },
   methods: {
+    mod () {
+      this.$router.push({ name: 'deck-mod', query: { id: this.id, invId: this.deck.investigator.id } })
+    },
     getDeck (id) {
       this.$axios.get(`${this.$cfg.path.api}data/deck`, {
         params: {
@@ -76,24 +122,56 @@ export default {
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)
         this.deck = res.data.deck
-        this.deck.cards.unshift({
-          card: {
-            _id: '',
-            name: 'Random Basic Weakness',
-            faction: '',
-            type: ''
-          },
-          qty: 1,
-          require: true
-        })
+        this.deck.cards.unshift(this.rbw)
         this.show = true
       })
       .catch((err) => {
         console.log(err.message)
       })
+    },
+    haveContents (subheader) {
+      let contents = 0
+      this.deck.cards.forEach((i) => {
+        if (subheader.value(i)) contents++
+      })
+
+      if (contents > 0) return true
+      return false
+    },
+    getBasicWeakness () {
+      this.getCardList({
+        draw: 0,
+        order: '_id',
+        sort: 1,
+        limit: 0,
+        query: {
+          subtype: 'Basic Weakness'
+        }
+      })
+      .then((res) => {
+        if (!res.data.success) throw new Error(res.data.msg)
+        this.basicWeakness = res.data.cards.array
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+    },
+    setBasicWeakness () {
+      const weak = this.basicWeakness
+      const min = 0
+      const max = weak.length
+      const index = Math.floor(Math.random() * (max - min)) + min
+      this.deck.cards.unshift({
+        card: weak[index],
+        _id: weak[index]._id,
+        qty: 1,
+        require: true
+      })
+
+      this.deck.cards.splice(1, 1)
     }
   },
-  mounted () {
+  created () {
     this.getDeck(this.id)
     this.getBasicWeakness()
   }

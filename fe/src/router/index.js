@@ -7,6 +7,7 @@ import chooseInvestigator from '@/components/deck/choose-investigator'
 import builder from '@/components/deck/builder'
 import deckList from '@/components/deck/deck-list'
 import deck from '@/components/deck/deck'
+import deckMod from '@/components/deck/deck-mod'
 
 Vue.use(Router)
 
@@ -23,6 +24,15 @@ export default new Router({
       component: builder,
       props: (route) => ({
         id: route.query.id
+      })
+    },
+    {
+      path: '/deck/mod/',
+      name: 'deck-mod',
+      component: deckMod,
+      props: (route) => ({
+        id: route.query.id,
+        invId: route.query.invId
       })
     },
     {

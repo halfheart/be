@@ -8,7 +8,7 @@
             <v-card-title class="builder-title">
             {{ `${investigatorName} Deck` }}<span :class="{ danger: !deckValidate }">{{ `(${deckSize}/${deckLimit})` }}</span>
             <v-spacer />
-            <v-btn :disabled="!deckValidate || pending" @click="submit()">submit</v-btn>
+            <v-btn :disabled="!deckValidate || pending" :loading="pending" @click="submit()">submit</v-btn>
             </v-card-title>
             <v-card-text>
               <v-list class="deck-builder" dense>
@@ -49,47 +49,27 @@
 </style>
 
 <script>
-import nowLoading from '@/components/now-loading'
 import sourceList from '@/components/deck/source-list'
-import cardStyleMixin from '@/components/mixins/card-style-mixin'
-import cardListMixin from '@/components/mixins/card-list-mixin'
-import deckMixin from '@/components/deck/mixins/deck-mixin'
+import deck from '@/components/deck/deck'
 
 export default {
-  mixins: [
-    cardStyleMixin,
-    cardListMixin,
-    deckMixin
-  ],
+  extends: deck,
   components: {
-    sourceList,
-    nowLoading
-  },
-  props: {
-    id: { type: String, default: null }
+    sourceList
   },
   data () {
     return {
       requirements: 0,
-      pending: false,
-      show: false
+      pending: false
     }
   },
   computed: {
     investigatorName: function () {
-      if (this.deck.investigator.name) return this.deck.investigator.name
+      if (this.deck.investigator !== {}) return this.deck.investigator.name
       return ''
     },
-    deckSize: function () {
-      let size = 0 - this.requirements
-      this.deck.cards.forEach((i) => {
-        size += i.qty
-      })
-
-      return size
-    },
     deckLimit: function () {
-      if (this.deck.investigator.deckSize) return this.deck.investigator.deckSize
+      if (this.deck.investigator !== {}) return this.deck.investigator.deckSize
       return 0
     },
     deckValidate: function () {
@@ -98,10 +78,13 @@ export default {
       return false
     }
   },
-  mounted () {
+  created () {
     this.getInvestigator(this.id)
   },
   methods: {
+    getDeck () {
+      // Overriding NOP
+    },
     submit () {
       this.pending = true
       this.$axios.post(`${this.$cfg.path.api}data/deck`, {
@@ -124,17 +107,22 @@ export default {
 
       return this.deck.cards[index].require
     },
+    getInvestigator (id) {
+      this.getCard(id)
+      .then((res) => {
+        if (!res.data.success) throw new Error(res.data.msg)
+        this.deck.investigator = res.data.card
+        this.setRequirements(this.deck.investigator)
+        this.show = true
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+    },
     setRequirements (investigator) {
       const requirements = investigator.deckRequirements
 
-      this.requirements = this.deck.cards.push({
-        card: {
-          name: 'Random Basic Weakness'
-        },
-        _id: '',
-        qty: 1,
-        require: true
-      })
+      this.requirements = this.deck.cards.push(this.rbw)
 
       requirements.forEach((i) => {
         this.requirements = this.deck.cards.push({
@@ -143,19 +131,6 @@ export default {
           qty: 1,
           require: true
         })
-      })
-    },
-    getInvestigator (id) {
-      this.getCard(id)
-      .then((res) => {
-        if (!res.data.success) throw new Error(res.data.msg)
-        this.deck.investigator = res.data.card
-        this.setRequirements(this.deck.investigator)
-        this.getBasicWeakness()
-        this.show = true
-      })
-      .catch((err) => {
-        console.log(err.message)
       })
     },
     addToDeck (e) {

@@ -14,27 +14,6 @@
     </v-expansion-panel>
   </v-card>
 </template>
-<!--
-<template>
-  <v-card>
-    <v-list>
-      <template v-for="(i, index) in cards.array">
-        <v-list-tile :key="index" @click="">
-          <v-list-tile-content>
-            <v-list-tile-title>
-              <span v-html="factionIcons(i.faction)"></span>{{ i.name }}<span v-if="i.xp">{{ `(${i.xp})` }}</span>
-            </v-list-tile-title>
-          </v-list-tile-content>
-          <v-list-tile-action>
-            <v-btn icon flat><v-icon>add</v-icon></v-btn>
-          </v-list-tile-action>
-        </v-list-tile>
-        <v-divider />
-      </template>
-    </v-list>
-  </v-card>
-</template>
-//-->
 
 <style>
 .source-list .v-expansion-panel__header {
@@ -65,7 +44,7 @@ export default {
       show: false
     }
   },
-  mounted () {
+  created () {
     this.getList()
   },
   methods: {

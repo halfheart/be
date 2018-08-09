@@ -1,26 +1,31 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
-      <v-flex v-for="(i, index) in decks.array" :key="index" md4>
-        <v-card>
-          <v-card-media
-          :src="imgPath(i.investigator._id)"
-          height="150">
-          </v-card-media>
-          <v-card-title primary-title>
-            <h3 class="headline mb-0">{{ i.name }}</h3>
-          </v-card-title>
-          <v-card-text>
+      <template v-if="decks.cnt > 0">
+        <v-flex v-for="(i, index) in decks.array" :key="index" md4>
+          <v-card>
+            <v-card-media
+            :src="imgPath(i.investigator._id)"
+            height="150">
+            </v-card-media>
+            <v-card-title primary-title>
+              <h3 class="headline mb-0">{{ i.name }}</h3>
+            </v-card-title>
+            <v-card-text>
 
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer />
-            <v-btn flat color="indigo" :href="$cfg.path.web+'deck/?id='+i._id">
-              선택
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer />
+              <v-btn flat color="indigo" :href="$cfg.path.web+'deck/?id='+i._id">
+                선택
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </template>
+      <template else>
+        데이터가 없습니다.
+      </template>
     </v-layout>
   </v-container>
 </template>
@@ -75,7 +80,7 @@ export default {
       })
     }
   },
-  mounted () {
+  created () {
     this.list()
   }
 }
