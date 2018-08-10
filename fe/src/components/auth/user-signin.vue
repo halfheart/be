@@ -74,7 +74,11 @@ export default {
 
         if (!res.data.success) throw new Error(res.data.msg)
         console.log('로그인됨')
+        this.$user._id = res.data.d._id
+        this.$user.username = res.data.d.username
+        this.$user.email = res.data.d.email
         this.show = false
+        location.href = '/#/deck/list'
       } catch (err) {
         console.log(err.message)
       }

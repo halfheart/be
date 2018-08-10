@@ -8,9 +8,11 @@
   "dependencies": {
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
+    "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
+    "jsonwebtoken": "^8.3.0",
     "mongodb-extended-json": "^1.10.0",
     "mongodb-extjson": "^3.0.3",
     "mongoose": "^5.2.5",

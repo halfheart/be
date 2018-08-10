@@ -8,9 +8,35 @@ import 'vuetify/dist/vuetify.min.css'
 
 import axios from 'axios'
 import cfg from '../static/cfg'
+import vueCookie from 'vue-cookie'
 
+axios.interceptors.request.use((config) => {
+  const token = vueCookie.get('token')
+  config.headers.Authorization = token
+  return config
+}, (err) => {
+  return Promise.reject(err)
+})
+
+axios.interceptors.response.use((res) => {
+  const rtk = res.headers['www-authenticate']
+  if (rtk) {
+    vueCookie.set('token', rtk, { expires: cfg.cookie.expiresIn })
+    axios.defaults.headers.common.Authorization = vueCookie.get('token')
+  }
+  return Promise.resolve(res)
+}, (err) => {
+  return Promise.reject(err)
+})
+
+Vue.prototype.$cookie = vueCookie
 Vue.prototype.$axios = axios
 Vue.prototype.$cfg = cfg
+Vue.prototype.$user = {
+  _id: '',
+  username: '',
+  email: ''
+}
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false

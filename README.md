@@ -25,7 +25,15 @@ module.exports = {
     url: 'mongodb://username:password@clusterX-shard-XX-XX-XXXXX.mongodb.net:XXXXX,clusterX-shard-XX-XX-XXXXX.mongodb.net:XXXXX/DBname?ssl=true&replicaSet=ClusterX-shard-X&authSource=admin' // url for connection to MongoDB with mongoose.
   },
   web: {
-    cors: true // 개발용
+    cors: true, // 개발용
+    host: 'localhost:3000',
+    secretKey: 'strongsecretkey',
+    jwt: {
+      expiresIn: '2m'
+    },
+    cookie: {
+      expiresIn: '2m'
+    }
   }
 }
 ```

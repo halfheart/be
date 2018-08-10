@@ -18,6 +18,7 @@ if (cfg.web.cors) app.use(require('cors')());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('jwt-secret', cfg.web.secretKey);
 
 app.use(logger('dev'));
 app.use(express.json());
