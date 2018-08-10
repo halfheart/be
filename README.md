@@ -17,8 +17,7 @@ It's developed with Node.js, Express.js, Vue.js, Vuetify and MongoDB.
 
 1. Clone the repository.
 2. Install NPM at the be directory: `npm install`
-3. Install MongoDB-extjson: `npm install mongodb-extjson`
-4. Create a cfg file: `be/cfg/cfg.js`
+3. Create a cfg file: `be/cfg/cfg.js`
 ```
 module.exports = {
   db: {
@@ -37,10 +36,10 @@ module.exports = {
   }
 }
 ```
-5. Install NPM at the fe derectory: `cd fe` `npm install`
-6. Run backend server: `cd be` `npm start`
+4. Install NPM at the fe derectory: `cd fe` `npm install`
+5. Run backend server: `cd be` `npm start`
 Then, mongoose install sample data. It takes few seconds. You can check this `Core Set created` and `Sample cards created` message in console.
-7. Run frontend server: `cd fe` `npm run dev`
+6. Run frontend server: `cd fe` `npm run dev`
 Then, you can check this http://localhost:8080/#/cardlist, packlist, deck/new
 
 ## Demo video
