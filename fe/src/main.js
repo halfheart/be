@@ -19,7 +19,7 @@ axios.interceptors.request.use((config) => {
 })
 
 axios.interceptors.response.use((res) => {
-  const rtk = res.headers['www-authenticate']
+  const rtk = res.headers['x-access-token']
   if (rtk) {
     vueCookie.set('token', rtk, { expires: cfg.cookie.expiresIn })
     axios.defaults.headers.common.Authorization = vueCookie.get('token')

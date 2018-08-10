@@ -1,10 +1,13 @@
 <template>
   <v-toolbar dark color="primary">
     <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title>{{ title }}</v-toolbar-title>
+    <v-toolbar-title>{{ `${title}` }}</v-toolbar-title>
     <v-spacer />
     <user-signin />
     <user-register />
+    <v-btn @click="test()">
+      테스트
+    </v-btn>
   </v-toolbar>
 </template>
 
@@ -25,7 +28,9 @@ export default {
     }
   },
   methods: {
-
+    test () {
+      console.log(JSON.stringify(this.$axios.defaults.headers.common.Authorization, undefined, 2))
+    }
   }
 }
 </script>

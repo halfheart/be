@@ -78,7 +78,7 @@ export default {
         this.$user.username = res.data.d.username
         this.$user.email = res.data.d.email
         this.show = false
-        location.href = '/#/deck/list'
+        // location.href = '/#/deck/list'
       } catch (err) {
         console.log(err.message)
       }

@@ -13,7 +13,9 @@ if (!cfg) {
   process.exit(1);
 }
 
-if (cfg.web.cors) app.use(require('cors')());
+if (cfg.web.cors) app.use(require('cors')({
+    exposedHeaders: ['x-access-token', 'Etag'],
+  }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

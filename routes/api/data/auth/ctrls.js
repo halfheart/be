@@ -39,7 +39,8 @@ exports.signin = (req, res) => {
     return p;
   })
   .then((tk) => {
-    res.set('WWW-Authenticate', tk);
+    res.set('x-access-token', tk);
+
     res.send({ success: true, d: user });
   })
   .catch((err) => {

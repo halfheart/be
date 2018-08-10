@@ -5,6 +5,9 @@ module.exports = {
     public: 'http://localhost:3000/',
     web: 'http://localhost:8080/#/'
   },
+  cookie: {
+    expiresIn: '2m'
+  },
   const: {
     ADD_MODE: '추가',
     MOD_MODE: '수정',
