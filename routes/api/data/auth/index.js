@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const ctrl = require('./ctrls');
 
-router.post('/', ctrl.signin);
+router.post('/signin', ctrl.signin);
 router.post('/register', ctrl.register);
 router.get('/validate', ctrl.validate);
 

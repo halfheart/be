@@ -1,7 +1,26 @@
 const User = require('../../../../models/users');
 
 exports.signin = (req, res) => {
-  res.send({ success: false, msg: 'auth signin 준비중' });
+  const {
+    email,
+    pwd
+  } = req.body;
+
+  User.findOne({email})
+  .then((r) => {
+    if (!r) throw new Error('존재하지 않는 이메일');
+    return User.findOne({
+      email,
+      pwd
+    });
+  })
+  .then((r) => {
+    if (!r) throw new Error('비밀번호가 다릅니다');
+    res.send({ success: true });
+  })
+  .catch((err) => {
+    res.send({ success: false, msg: err.message });
+  });
 }
 
 exports.register = (req, res) => {
@@ -39,8 +58,8 @@ exports.validate = (req, res) => {
 
   User.findOne(query)
   .then((r) => {
-    if (!r) res.send({ success: true, valid: true });
-    throw new Error('중복')
+    if (r) throw new Error('중복')
+    res.send({ success: true, valid: true });
   })
   .catch((err) => {
     res.send({ success: true, msg: err.message , valid: false });

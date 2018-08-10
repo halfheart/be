@@ -28,7 +28,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn @click="submit()">submit</v-btn>
+          <v-btn @click="submit()" :loading="pending" :disabled="pending">submit</v-btn>
         </v-card-actions>
       </v-form>
     </v-card>
@@ -41,6 +41,7 @@ export default {
     return {
       show: false,
       pwdShow: false,
+      pending: false,
       form: {
         email: '',
         pwd: '',
@@ -65,6 +66,7 @@ export default {
   },
   methods: {
     async submit () {
+      this.pending = true
       try {
         if (!this.$refs.form.validate()) throw new Error('양식을 모두 올바르게 입력해주세요')
 
@@ -87,9 +89,11 @@ export default {
         if (!res.data.success) throw new Error(res.data.msg)
 
         console.log('등록됨')
+        this.show = false
       } catch (err) {
         console.log(err.message)
       }
+      this.pending = false
     },
     async isValidEmail (email) {
       try {
