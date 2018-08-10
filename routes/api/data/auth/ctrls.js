@@ -3,6 +3,10 @@ const gb = require('../../../../system/global');
 const jwt = require('jsonwebtoken');
 const cfg = require('../../../../cfg/cfg');
 
+exports.signout = (req, res) => {
+  res.send({ success: true });
+}
+
 exports.signin = (req, res) => {
   const {
     email,

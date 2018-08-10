@@ -3,11 +3,11 @@
     <v-toolbar-side-icon></v-toolbar-side-icon>
     <v-toolbar-title>{{ `${title}` }}</v-toolbar-title>
     <v-spacer />
-    <user-signin />
-    <user-register />
-    <v-btn @click="test()">
-      테스트
-    </v-btn>
+    <template v-if="!isLoggedin">
+      <user-signin />
+      <user-register />
+    </template>
+    <v-btn flat icon @click="signout()" v-if="isLoggedin"><v-icon>lock_open</v-icon></v-btn>
   </v-toolbar>
 </template>
 
@@ -22,14 +22,28 @@ export default {
   props: {
     title: { type: String }
   },
+  computed: {
+    isLoggedin: function () {
+      if (this.$cookie.get('token') !== null) return true
+      return false
+    }
+  },
   data () {
     return {
-
     }
   },
   methods: {
-    test () {
-      console.log(JSON.stringify(this.$axios.defaults.headers.common.Authorization, undefined, 2))
+    signout () {
+      this.$axios.post(`${this.$cfg.path.api}data/auth/signout`)
+      .then((res) => {
+        if (!res.data.success) throw new Error(res.data.msg)
+        this.$cookie.delete('token')
+        console.log('로그아웃됨')
+        location.reload()
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
     }
   }
 }
