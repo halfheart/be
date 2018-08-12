@@ -24,7 +24,8 @@ export default {
   },
   computed: {
     isLoggedin: function () {
-      if (this.$cookie.get('token') !== null) return true
+      // if (this.$cookie.get('token') !== null) return true
+      if (sessionStorage.getItem('token') !== null) return true
       return false
     }
   },
@@ -37,7 +38,8 @@ export default {
       this.$axios.post(`${this.$cfg.path.api}data/auth/signout`)
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)
-        this.$cookie.delete('token')
+        // this.$cookie.delete('token')
+        sessionStorage.removeItem('token')
         console.log('로그아웃됨')
         location.reload()
       })

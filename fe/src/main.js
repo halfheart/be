@@ -11,7 +11,7 @@ import cfg from '../static/cfg'
 import vueCookie from 'vue-cookie'
 
 axios.interceptors.request.use((config) => {
-  const token = vueCookie.get('token')
+  const token = sessionStorage.getItem('token')
   config.headers.Authorization = token
   return config
 }, (err) => {
@@ -21,8 +21,10 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use((res) => {
   const rtk = res.headers['x-access-token']
   if (rtk) {
-    vueCookie.set('token', rtk, { expires: cfg.cookie.expiresIn })
-    axios.defaults.headers.common.Authorization = vueCookie.get('token')
+    // vueCookie.set('token', rtk, { expires: cfg.cookie.expiresIn })
+    // axios.defaults.headers.common.Authorization = vueCookie.get('token')
+    sessionStorage.setItem('token', rtk)
+    axios.defaults.headers.common.Authorization = sessionStorage.getItem('token')
   }
   return Promise.resolve(res)
 }, (err) => {
