@@ -7,11 +7,17 @@
     disable-initial-sort>
       <template slot="items" slot-scope="cards">
         <td>
-          <span class="font-icon icon-unique" v-if="cards.item.isUnique"></span>
-          <card-popover :card="cards.item" :show-subname="true" my-style="py-2 pr-2" />
-          <span v-if="cards.item.xp">{{ `(${cards.item.xp})` }}</span>
+          <v-layout>
+            <span class="font-icon icon-unique" v-if="cards.item.isUnique"></span>
+            <card-popover :card="cards.item" :show-subname="true" my-style="py-2 pr-2" />
+            <span v-if="cards.item.xp">{{ `(${cards.item.xp})` }}</span>
+          </v-layout>
         </td>
-        <td><span v-html="factionIcons(cards.item.faction)"></span>{{ cards.item.faction }}</td>
+        <td>
+          <v-layout>
+            <span v-html="factionIcons(cards.item.faction)"></span>{{ cards.item.faction }}
+          </v-layout>
+        </td>
         <td>{{ cards.item.cost }}</td>
         <td>{{ cards.item.type }}</td>
         <td>
@@ -22,9 +28,11 @@
         </td>
         <td>{{ `${cards.item.includedPack.name} #${cards.item.number}` }}</td>
         <td>
-          <investigator-mod v-if="cards.item.type === $cfg.const.INVESTIGATOR" :id="cards.item._id" @list="list()" />
-          <playercard-mod v-if="cards.item.type !== $cfg.const.INVESTIGATOR" :id="cards.item._id" @list="list()" />
-          <card-del :id="cards.item._id" @list="list()" />
+          <v-layout>
+            <investigator-mod v-if="cards.item.type === $cfg.const.INVESTIGATOR" :id="cards.item._id" @list="list()" />
+            <playercard-mod v-if="cards.item.type !== $cfg.const.INVESTIGATOR" :id="cards.item._id" @list="list()" />
+            <card-del :id="cards.item._id" @list="list()" />
+          </v-layout>
         </td>
       </template>
     </v-data-table>

@@ -1,9 +1,13 @@
 <template>
-  <v-btn flat icon @click="signout()"><v-icon>lock_open</v-icon></v-btn>
+  <v-btn v-if="isLoggedin" flat icon @click="signout()"><v-icon>lock_open</v-icon></v-btn>
 </template>
 
 <script>
+import userCtrlsMixin from './mixins/user-ctrls-mixin'
 export default {
+  mixins: [
+    userCtrlsMixin
+  ],
   data () {
     return {
       signout () {

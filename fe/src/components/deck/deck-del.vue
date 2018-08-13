@@ -37,7 +37,7 @@ export default {
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)
         console.log('삭제됨')
-        this.$router.push({ name: 'deckList' })
+        this.$router.push({ name: 'index' })
         this.close()
       })
       .catch((err) => {

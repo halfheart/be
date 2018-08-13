@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="show">
+  <v-dialog v-model="show" v-if="!isLoggedin">
     <v-btn icon flat slot="activator"><v-icon>person_add</v-icon></v-btn>
     <v-card>
       <v-form ref="form" lazy-validation>
@@ -36,7 +36,11 @@
 </template>
 
 <script>
+import userCtrlsMixin from './mixins/user-ctrls-mixin'
 export default {
+  mixins: [
+    userCtrlsMixin
+  ],
   data () {
     return {
       show: false,
