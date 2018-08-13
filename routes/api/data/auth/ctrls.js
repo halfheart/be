@@ -12,7 +12,6 @@ exports.signin = (req, res) => {
     email,
     pwd
   } = req.body;
-
   let user = {};
 
   User.findOne({email})
@@ -20,12 +19,15 @@ exports.signin = (req, res) => {
     if (!r) throw new Error('존재하지 않는 이메일');
     if (r.pwd !== gb.f.encrypt(pwd)) throw new Error('비밀번호가 다릅니다');
 
-    const secret = req.app.get('jwt-secret');
     user = {
       _id: r._id,
       email: r.email,
       username: r.username
-    };
+    }
+    if (r.isAdmin) res.set('x-is-admin', r.isAdmin);
+
+    const secret = req.app.get('jwt-secret');
+
     const p = new Promise((resolve, reject) => {
       jwt.sign(
         user,
@@ -45,7 +47,7 @@ exports.signin = (req, res) => {
   .then((tk) => {
     res.set('x-access-token', tk);
 
-    res.send({ success: true, d: user });
+    res.send({ success: true, user: user });
   })
   .catch((err) => {
     res.send({ success: false, msg: err.message });

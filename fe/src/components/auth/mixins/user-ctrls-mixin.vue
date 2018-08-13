@@ -6,8 +6,7 @@ export default {
   },
   computed: {
     isLoggedin: function () {
-      // if (this.$cookie.get('token') !== null) return true
-      if (sessionStorage.getItem('token') !== null) return true
+      if (this.$auth.token !== null) return true
       return false
     }
   }

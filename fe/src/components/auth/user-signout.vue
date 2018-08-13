@@ -14,8 +14,7 @@ export default {
         this.$axios.post(`${this.$cfg.path.api}data/auth/signout`)
         .then((res) => {
           if (!res.data.success) throw new Error(res.data.msg)
-          // this.$cookie.delete('token')
-          sessionStorage.removeItem('token')
+          this.$auth.destroy()
           console.log('로그아웃됨')
           location.reload()
         })

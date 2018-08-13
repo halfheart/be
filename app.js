@@ -14,7 +14,7 @@ if (!cfg) {
 }
 
 if (cfg.web.cors) app.use(require('cors')({
-    exposedHeaders: ['x-access-token', 'Etag'],
+    exposedHeaders: ['x-access-token', 'x-is-admin', 'Etag'],
   }));
 
 // view engine setup

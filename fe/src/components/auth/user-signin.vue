@@ -63,27 +63,31 @@ export default {
     }
   },
   methods: {
-    async submit () {
+    submit () {
       this.pending = true
-      try {
-        if (!this.$refs.form.validate()) throw new Error('양식을 올바르게 채워주세요.')
-
+      if (this.$refs.form.validate()) {
         const email = this.form.email
         const pwd = this.form.pwd
 
-        const res = await this.$axios.post(`${this.$cfg.path.api}data/auth/signin`, {
+        this.$axios.post(`${this.$cfg.path.api}data/auth/signin`, {
           email,
           pwd
         })
-
-        if (!res.data.success) throw new Error(res.data.msg)
-        console.log('로그인됨')
-        this.show = false
-        location.reload()
-      } catch (err) {
-        console.log(err.message)
+        .then((res) => {
+          if (!res.data.success) throw new Error(res.data.msg)
+          console.log('로그인됨')
+          this.setCookies(res.data.user)
+          this.show = false
+          location.reload()
+        })
       }
       this.pending = false
+    },
+    setCookies (u) {
+      const expiresIn = this.$cfg.cookie.expiresIn
+      this.$cookie.set('user_id', u._id, { expires: expiresIn })
+      this.$cookie.set('username', u.username, { expires: expiresIn })
+      this.$cookie.set('userEmail', u.email, { expires: expiresIn })
     }
   }
 }

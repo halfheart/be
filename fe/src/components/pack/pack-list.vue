@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-list>
+    <now-loading :show="show" />
+    <v-list v-if="show">
       <v-list-tile v-for="pack in packs.array" :key="pack._id" @click="">
         <v-list-tile-content>
           {{ pack.name }}
@@ -14,12 +15,14 @@
 </template>
 
 <script>
+import nowLoading from '@/components/now-loading'
 import packAdd from '@/components/pack/pack-add'
 import packMod from '@/components/pack/pack-mod'
 import packDel from '@/components/pack/pack-del'
 
 export default {
   components: {
+    nowLoading,
     packAdd,
     packMod,
     packDel
@@ -27,6 +30,7 @@ export default {
   name: 'pack-list',
   data () {
     return {
+      show: false,
       packs: {
         cnt: 0,
         draw: 0,
@@ -68,6 +72,7 @@ export default {
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)
         this.packs = res.data.packs
+        this.show = true
       })
       .catch((err) => {
         console.log(err.message)

@@ -21,24 +21,37 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use((res) => {
   const rtk = res.headers['x-access-token']
   if (rtk) {
-    // vueCookie.set('token', rtk, { expires: cfg.cookie.expiresIn })
-    // axios.defaults.headers.common.Authorization = vueCookie.get('token')
-    sessionStorage.setItem('token', rtk)
-    axios.defaults.headers.common.Authorization = sessionStorage.getItem('token')
+    vueCookie.set('token', rtk, { expires: cfg.cookie.expiresIn })
+    axios.defaults.headers.common.Authorization = vueCookie.get('token')
+  }
+  const isAdmin = res.headers['x-is-admin']
+  if (isAdmin) {
+    sessionStorage.setItem('isAdmin', isAdmin)
   }
   return Promise.resolve(res)
 }, (err) => {
   return Promise.reject(err)
 })
 
+Vue.prototype.$auth = {
+  admin: sessionStorage.getItem('isAdmin'),
+  token: vueCookie.get('token'),
+  _id: vueCookie.get('user_id'),
+  username: vueCookie.get('username'),
+  email: vueCookie.get('userEmail'),
+  destroy: function () {
+    sessionStorage.removeItem('isAdmin')
+    vueCookie.delete('token')
+    vueCookie.delete('user_id')
+    vueCookie.delete('username')
+    vueCookie.delete('userEmail')
+  }
+}
+
 Vue.prototype.$cookie = vueCookie
 Vue.prototype.$axios = axios
 Vue.prototype.$cfg = cfg
-Vue.prototype.$user = {
-  _id: '',
-  username: '',
-  email: ''
-}
+
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false
