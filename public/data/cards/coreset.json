@@ -53,14 +53,14 @@
       "text":"Roland Banks deck only.\n\nUses (4 ammo).\n\n[action] Spend 1 ammo: Fight. You get +1 [combat] for this attack (if there are 1 or more clues on your location, you get +3 [combat], instead). This attack deals +1 damage.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Roland's .38 Special",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"Tiziano Baracchi",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -123,14 +123,14 @@
       "text":"Revelation - Put Cover Up into play in your threat area, with 3 clues on it.\n\n[reaction] When you would discover 1 or more clues at your location: Discard that many clues from Cover Up instead.\n\nForced - When the game ends, if there are any clues on Cover Up: You suffer 1 mental trauma.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Cover Up",
       "faction":"Neutral",
       "type":"Treachery",
       "illustrator":"Marcin Jakubowski",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -193,14 +193,14 @@
       "text":"Revelation - Put Hospital Debts into play in your threat area.\n\n[fast action]: Move 1 resource from your resource pool to Hospital Debts. (Limit twice per round.)\n\nForced - When the game ends, if Hospital Debts has fewer than 6 resources on it: You earn 2 fewer experience for this scenario.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Hospital Debts",
       "faction":"Neutral",
       "type":"Treachery",
       "illustrator":"Adam Lane",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -265,14 +265,14 @@
       "text":"\"Skids\" O'Toole deck only.\n\nFast. Play after your turn begins.\n\nUntil the end of the round, non-Elite enemies cannot attack you.",
       "flavor":"I ain't going to the pen a second time.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"On the Lam",
       "faction":"Neutral",
       "type":"Event",
       "illustrator":"John Pacer",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -335,14 +335,14 @@
       "text":"Revelation - Take 2 direct horror and remove all cards in your discard pile from the game.",
       "flavor":"I don't need them. I don't need anyone.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Abandoned and Alone",
       "faction":"Neutral",
       "type":"Treachery",
       "illustrator":"Ben Zweifel",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -403,7 +403,7 @@
       "deckSize":{
          "$numberInt":"30"
       },
-      "deckRequirements":[
+      "deckReq_ids":[
          {
             "$oid":"5b5b0a7317e85943dc2b1cbd"
          },
@@ -415,7 +415,7 @@
       "faction":"Seeker",
       "type":"조사자",
       "illustrator":"Magali Villeneuve",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -511,7 +511,7 @@
       "deckSize":{
          "$numberInt":"30"
       },
-      "deckRequirements":[
+      "deckReq_ids":[
          {
             "$oid":"5b5b0e9017e85943dc2b1cc3"
          },
@@ -523,7 +523,7 @@
       "faction":"Survivor",
       "type":"조사자",
       "illustrator":"Jacob Murray",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -623,14 +623,14 @@
       "text":"Daisy Walker deck only.\n\nYou have 2 additional hand slots, which can only be used to hold Tome assets.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Daisy's Tote Bag",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"Dani Hartel",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -695,14 +695,14 @@
       "text":"Place 1 doom on the current agenda. This effect may cause the current agenda to advance.\n\nForced - If Dark Memory is in your hand at the end of your turn, reveal it and take 2 horror.",
       "flavor":"No... not again!",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Dark Memory",
       "faction":"Neutral",
       "type":"Event",
       "illustrator":"Falk",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -768,14 +768,14 @@
       "text":"Agnes Baker deck only.\n\n[reaction] After you play a spell card: Draw 1 card.",
       "flavor":"The etchings on its surface change from day to day, and moving whenever I'm not looking.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Heirloom of Hyperborea",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"Dani Hartel",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -837,7 +837,7 @@
       "deckSize":{
          "$numberInt":"30"
       },
-      "deckRequirements":[
+      "deckReq_ids":[
          {
             "$oid":"5b5b060b17e85943dc2b1cbb"
          },
@@ -849,7 +849,7 @@
       "faction":"Guardian",
       "type":"조사자",
       "illustrator":"Magali Villeneuve",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -948,14 +948,14 @@
       "text":"Revelation - Put The Necronomicon into play in your threat area, with 3 horror on it. It cannot leave play while it has 1 or more horror on it.\n\nTreat each [elder sign] you reveal on a chaos token as a [auto fail].\n\n[action]: Move 1 horror from The Necronomicon to Daisy Walker. Then, if The Necronomicon has no horror on it, discard it.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"The Necronomicon",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"Jesse Mead",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1021,14 +1021,14 @@
       "text":"Wendy Adams deck only.\n\nYou may play the topmost event in your discard pile as if it were in your hand.\n\nForced - After you play an event: Place it on the bottom of your deck instead of in your discard pile.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Wendy's Amulet",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"Linda Tso",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1089,7 +1089,7 @@
       "deckSize":{
          "$numberInt":"30"
       },
-      "deckRequirements":[
+      "deckReq_ids":[
          {
             "$oid":"5b5b0c4617e85943dc2b1cc1"
          },
@@ -1101,7 +1101,7 @@
       "faction":"Mystic",
       "type":"조사자",
       "illustrator":"Magali Villeneuve",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1197,7 +1197,7 @@
       "deckSize":{
          "$numberInt":"30"
       },
-      "deckRequirements":[
+      "deckReq_ids":[
          {
             "$oid":"5b5b0b1d17e85943dc2b1cbf"
          },
@@ -1209,7 +1209,7 @@
       "faction":"Rogue",
       "type":"조사자",
       "illustrator":"Magali Villeneuve",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1311,14 +1311,14 @@
       "text":"Uses (4 ammo).\n\n[action] Spend 1 ammo: Fight. You get +1 [combat] for this attack. This attack deals +1 damage.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":".45 Automatic",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"John Pacer",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1383,14 +1383,14 @@
       "text":"[fast action] Spend 1 resource: You get +1 [willpower] for this skill test.\n\n[fast action] Spend 1 resource: You get +1 [combat] for this skill test.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Physical Training",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"Lake Hurwitz",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1456,14 +1456,14 @@
       "text":"You get +1 [combat].\n\n[fast action] Discard Beat Cop: Deal 1 damage to an enemy at your location.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Beat Cop",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"Nicholas Elias",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1529,14 +1529,14 @@
       "text":"Uses (3 supplies). If First Aid has no supplies, discard it.\n\n[action] Spend 1 supply: Heal 1 damage or horror from an investigator at your location.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"First Aid",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"Sara Biddle",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1603,14 +1603,14 @@
       "text":"[action]: Fight. You get +1  for this attack. If the attacked enemy is the only enemy engaged with you, this attack deals +1 damage.",
       "flavor":"Cuts through vines, underbrush, and tentacles equally well.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Machete",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"Jason Caffoe",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1676,14 +1676,14 @@
       "text":"[reaction] When an enemy attack deals damage to Guard Dog: Deal 1 damage to the attacking enemy.",
       "flavor":"Fiercely loyal, these trained canines make for perfect companions.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Guard Dog",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"Stephen Somers",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1748,14 +1748,14 @@
       "text":"Fast. Play after you defeat an enemy.\n\nDiscover 1 clue at your location.",
       "flavor":"Just as I suspected!",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Evidence!",
       "faction":"Guardian",
       "type":"Event",
       "illustrator":"Mark Behm",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1820,14 +1820,14 @@
       "text":"Fast. Play when an enemy attacks an investigator at your location.\n\nCancel that attack.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Dodge",
       "faction":"Guardian",
       "type":"Event",
       "illustrator":"Dane Cozens",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1892,14 +1892,14 @@
       "text":"Choose either your location or a connecting location. Deal 3 damage to each enemy and to each investigator at the chosen location.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Dynamite Blast",
       "faction":"Guardian",
       "type":"Event",
       "illustrator":"Dimitri Bielak",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -1962,14 +1962,14 @@
       "text":"If this skill test is successful during an attack, that attack deals +1 damage.",
       "flavor":"With a sickening smack, he struck the abomination over and over... until at last, it stopped moving.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Vicious Blow",
       "faction":"Guardian",
       "type":"Skill",
       "illustrator":" JB Casacop",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2034,14 +2034,14 @@
       "text":"Place 3 ammo tokens on a Firearm asset controlled by an investigator at your location.",
       "flavor":"I've never met a beast that could outsmart a bullet.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Extra Ammunition",
       "faction":"Guardian",
       "type":"Event",
       "illustrator":"Michael J. Williams",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2106,14 +2106,14 @@
       "text":"You get +1 [willpower].\n\n[fast action] While an investigator at your location is taking his or her turn, discard Police Badge: That investigator may take 2 additional actions this turn.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Police Badge",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"Stanislav Dikolenko",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2179,14 +2179,14 @@
       "text":"You get +1 [combat].\n\n[fast action] Exhaust Beat Cop and deal 1 damage to it: Deal 1 damage to an enemy at your location.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Beat Cop",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"Nicholas Elias",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2253,14 +2253,14 @@
       "text":"Uses (2 ammo).\n\n[action] Spend 1 ammo: Fight. You get +3 [combat] for this attack. Instead of its standard damage, this attack deals 1 damage for each point you succeed by (to a minimum of 1, to a maximum of 5). If you fail and would damage another investigator, this attack deals 1 damage for each point you fail by (to a minimum of 1, to a maximum of 5).",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Shotgun",
       "faction":"Guardian",
       "type":"Asset",
       "illustrator":"Tony Foti",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2326,14 +2326,14 @@
       "text":"Fast.\n\nYou get +1 [intellect] while investigating.",
       "flavor":"A lens into a world unseen can reveal things you wish it hadn't.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Magnifying Glass",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"German Nobile",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2399,14 +2399,14 @@
       "text":"[action] Exhaust Old Book of Lore: Choose an investigator at your location. That investigator searches the top 3 cards of his or her deck for a card, draws it, and shuffles the remaining cards into his or her deck.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Old Book of Lore",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"Dimitri Bielak",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2472,14 +2472,14 @@
       "text":"[reaction] After Research Librarian enters play: Search your deck for a Tome asset and add it to your hand. Shuffle your deck.",
       "flavor":"\"There have been problems at the Orne Library, as we both know, given poor Armitage's condition, and the other, unrelated... incident of a few years ago...\"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Research Librarian",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"Tomasz Jedruszek",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2545,14 +2545,14 @@
       "text":"You get +1 [intellect].\n\n[reaction] After you successfully investigate: Gain 1 resource.",
       "flavor":"\"While I truly believe that this nightmare is just a singular abomination, I must admit that I am exhilarated by the possibility that this is but one specimen of a new genus!\"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Dr. Milan Christopher",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"Anthony Devine",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2617,14 +2617,14 @@
       "text":"[fast action] Spend 1 resource: You get +1 [intellect] for this skill test.\n\n[fast action] Spend 1 resource: You get +1 [agility] for this skill test.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Hyperawareness",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"Aurore Folny",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2690,14 +2690,14 @@
       "text":"[action] Choose an investigator at your location and test [intellect] (2). If you succeed, heal 1 damage from that investigator. If you fail, deal 1 damage to that investigator.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Medical Texts",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"Anna Christenson",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2762,14 +2762,14 @@
       "text":"Fast. Play only during your turn.\n\nUntil the end of the round, you may use your [intellect] in place of your [combat] and [agility].",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Mind over Matter",
       "faction":"Seeker",
       "type":"Event",
       "illustrator":"Maggie Ivy",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2834,14 +2834,14 @@
       "text":"Fast. Play only during your turn.\n\nDiscover 1 clue at your location.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Working a Hunch",
       "faction":"Seeker",
       "type":"Event",
       "illustrator":"Maggie Ivy",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2907,14 +2907,14 @@
       "text":"Attach to your location.\n\nNon-Elite enemies cannot move into attached location.\n\nForced - When an investigator leaves attached location: Discard Barricade.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Barricade",
       "faction":"Seeker",
       "type":"Event",
       "illustrator":"Stephen Somers",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -2977,14 +2977,14 @@
       "text":"If this skill test is successful while investigating a location, discover 1 additional clue at that location.",
       "flavor":"I knew I had seen this symbol before. I must warn the others before it is too late!",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Deduction",
       "faction":"Seeker",
       "type":"Skill",
       "illustrator":"Felicia Cano",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3050,14 +3050,14 @@
       "text":"Fast.\n\nYou get +1 [intellect] while investigating.\n\n[fast action] If there are no clues on your location: Return Magnifying Glass to your hand.",
       "flavor":"A lens into a world unseen can reveal things you wish it hadn't.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Magnifying Glass",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"German Nobile",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3123,14 +3123,14 @@
       "text":"[reaction] When a non-Elite enemy spawns at your location, discard Disc of Itzamna: Discard that enemy.",
       "flavor":"Do they fear it because of what it will do to them? Or, do they fear it because of what it will do to you?",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Disc of Itzamna",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"Melissa Findley",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3196,14 +3196,14 @@
       "text":"[action] Exhaust Encyclopedia: Choose an investigator at your location. That investigator gets +2 to a skill of your choice until the end of the phase.",
       "flavor":"It's supposed to be comprehensive, but the more I search through its pages, the more I realize we know nothing about the real truths of the cosmos.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Encyclopedia",
       "faction":"Seeker",
       "type":"Asset",
       "illustrator":"Eric Wilkerson",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3268,14 +3268,14 @@
       "text":"Fast. Play only during your turn.\n\nChoose an investigator at your location. That investigator draws 3 cards.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Cryptic Research",
       "faction":"Seeker",
       "type":"Event",
       "illustrator":"Tomasz Jedruszek",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3343,14 +3343,14 @@
       "text":"Fast.\n\n[action]: Fight. If you succeed by 2 or more, this attack deals +1 damage.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Switchblade",
       "faction":"Rogue",
       "type":"Asset",
       "illustrator":"Matthew Cowdery",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3416,14 +3416,14 @@
       "text":"[action] Exhaust Burglary: Investigate. If you succeed, instead of discovering clues, gain 3 resources.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Burglary",
       "faction":"Rogue",
       "type":"Asset",
       "illustrator":"Sara Biddle",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3489,14 +3489,14 @@
       "text":"[reaction] After you evade an enemy, exhaust Pickpocketing: Draw 1 card.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Pickpocketing",
       "faction":"Rogue",
       "type":"Asset",
       "illustrator":"Stanislav Dikolenko",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3564,14 +3564,14 @@
       "text":"Uses (3 ammo).\n\n[action] Spend 1 ammo: Fight. You get +2 [combat] for this attack. If you succeed by 2 or more, this attack deals +1 damage.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":".41 Derringer",
       "faction":"Rogue",
       "type":"Asset",
       "illustrator":"John Pacer",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3637,14 +3637,14 @@
       "text":"You may take an additional action during your turn.",
       "flavor":"\"I was born in Mississippi. Louisiana just sounded better.\"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Leo De Luca",
       "faction":"Rogue",
       "type":"Asset",
       "illustrator":"Paco Rico Torres",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3709,14 +3709,14 @@
       "text":"[fast action] Spend 1 resource: You get +1 [combat] for this skill test.\n\n[fast action] Spend 1 resource: You get +1 [agility] for this skill test.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Hard Knocks",
       "faction":"Rogue",
       "type":"Asset",
       "illustrator":"Magali Villeneuve",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3781,14 +3781,14 @@
       "text":"Fast. Play only during your turn.\n\nDisengage from each enemy engaged with you and move to a revealed location with no enemies.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Elusive",
       "faction":"Rogue",
       "type":"Event",
       "illustrator":"Adam Schumpert",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3853,14 +3853,14 @@
       "text":"Fight. This attack uses [agility] instead of [combat]. This attack deals +2 damage.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Backstab",
       "faction":"Rogue",
       "type":"Event",
       "illustrator":"Federico Piatti",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3925,14 +3925,14 @@
       "text":"Deal 2 damage to an exhausted enemy at your location.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Sneak Attack",
       "faction":"Rogue",
       "type":"Event",
       "illustrator":"Stanislav Dikolenko",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -3995,14 +3995,14 @@
       "text":"Commit only to a skill test you are performing.\n\nIf you succeed by 3 or more, return Opportunist to your hand after this test instead of discarding it.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Opportunist",
       "faction":"Rogue",
       "type":"Skill",
       "illustrator":"Rafał Hrynkiewicz",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4068,14 +4068,14 @@
       "text":"You may take an additional action during your turn.",
       "flavor":"\"I was born in Mississippi. Louisiana just sounded better.\"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Leo De Luca",
       "faction":"Rogue",
       "type":"Asset",
       "illustrator":"Paco Rico Torres",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4141,14 +4141,14 @@
       "text":"You get +1 [agility].\n\n[action] Exhaust Cat Burglar: Disengage from each enemy engaged with you and move to a connecting location. This action does not provoke attacks of opportunity.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Cat Burglar",
       "faction":"Rogue",
       "type":"Asset",
       "illustrator":"JB Casacop",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4214,14 +4214,14 @@
       "text":"Fast. Play after you reveal a chaos token with a negative modifier.\n\nSwitch that token's \"–\" to a \"+\".",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Sure Gamble",
       "faction":"Rogue",
       "type":"Event",
       "illustrator":"Sara Biddle",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4286,14 +4286,14 @@
       "text":"Gain 10 resources.",
       "flavor":"\"I win again! Sorry sugar, it's just not your night.\"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Hot Streak",
       "faction":"Rogue",
       "type":"Event",
       "illustrator":"Sara Biddle",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4358,14 +4358,14 @@
       "text":"Uses (4 secrets).\n\n[fast action] Exhaust Forbidden Knowledge and take 1 horror: Move 1 secret from Forbidden Knowledge to your resource pool, as a resource.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Forbidden Knowledge",
       "faction":"Mystic",
       "type":"Asset",
       "illustrator":"Drew Whitmore",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4431,14 +4431,14 @@
       "text":"You get +1 [willpower].",
       "flavor":"Whether focused through a mundane trinket or a mystical artifact, there is real power in faith all the same.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Holy Rosary",
       "faction":"Mystic",
       "type":"Asset",
       "illustrator":"Sara Biddle",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4503,14 +4503,14 @@
       "text":"Uses (4 charges).\n\n[action] Spend 1 charge: Fight. This attack uses [willpower] instead of [combat] and deals +1 damage. If a [skull], [cultist], [tablet], [elder thing], or [auto fail] symbol is revealed during this check, take 1 horror.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Shrivelling",
       "faction":"Mystic",
       "type":"Asset",
       "illustrator":"Brian Valenzuela",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4575,14 +4575,14 @@
       "text":"Uses (3 charges).\n\n[action] Exhaust Scrying and spend 1 charge: Look at the top 3 cards of any investigator's deck or the encounter deck. Return them to the top of that deck in any order.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Scrying",
       "faction":"Mystic",
       "type":"Asset",
       "illustrator":"Romana Kendelic",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4647,14 +4647,14 @@
       "text":"[fast action] Spend 1 resource: You get +1 [willpower] for this skill test.\n\n[fast action] Spend 1 resource: You get +1 [intellect] for this skill test.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Arcane Studies",
       "faction":"Mystic",
       "type":"Asset",
       "illustrator":"Alexandre Dainche",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4720,14 +4720,14 @@
       "text":"Forced - After Arcane Initiate enters play: Place 1 doom on it.\n\n[fast action] Exhaust Arcane Initiate: Search the top 3 cards of your deck for a Spell card and draw it. Shuffle your deck.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Arcane Initiate",
       "faction":"Mystic",
       "type":"Asset",
       "illustrator":"Xia Taptara",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4792,14 +4792,14 @@
       "text":"Draw the top card of the encounter deck. Then, discover 2 clues at your location.",
       "flavor":"\"We live on a placid island of ignorance in the midst of black seas of infinity, and it was not meant that we should voyage far.\" H. P. Lovecraft, \"The Call of Cthulhu\"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Drawn to the Flame",
       "faction":"Mystic",
       "type":"Event",
       "illustrator":"Magali Villeneuve",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4865,14 +4865,14 @@
       "text":"Fast. Play when you draw a non-weakness treachery card.\n\nCancel that card's revelation effect. Then, take 1 horror.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Ward of Protection",
       "faction":"Mystic",
       "type":"Event",
       "illustrator":"Alexandr Elichev",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -4937,14 +4937,14 @@
       "text":"Evade. This evasion attempt uses [willpower] instead of [agility]. If you succeed, deal 1 damage to the enemy just evaded. If a [skull], [cultist], [tablet], [elder thing], or [auto fail]symbol is revealed during this evasion attempt, lose 1 action this turn.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Blinding Light",
       "faction":"Mystic",
       "type":"Event",
       "illustrator":"Stephen Somers",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5007,14 +5007,14 @@
       "text":"If this skill test is successful, heal 1 horror.",
       "flavor":"Only by standing firm against the darkness can we live to see the light of another day.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Fearless",
       "faction":"Mystic",
       "type":"Skill",
       "illustrator":"RJ Palmer",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5079,14 +5079,14 @@
       "text":"Fast. Play after a phase begins.\n\nChoose a non-Elite enemy at your location. Treat the chosen enemy's printed text box as if it were blank (except for Traits) until the end of the phase.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Mind Wipe",
       "faction":"Mystic",
       "type":"Event",
       "illustrator":"Rafał Hrynkiewicz",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5151,14 +5151,14 @@
       "text":"Evade. This evasion attempt uses [willpower] instead of [agility]. If you succeed, deal 2 damage to the enemy just evaded. If a [skull], [cultist], [tablet], [elder thing], or [auto fail]symbol is revealed during this evasion attempt, lose 1 action this turn and take 1 horror.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Blinding Light",
       "faction":"Mystic",
       "type":"Event",
       "illustrator":"Stephen Somers",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5224,14 +5224,14 @@
       "text":"You have 1 additional arcane slot.\n\n[action] Exhaust Book of Shadows: Add 1 charge to a Spell asset you control.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Book of Shadows",
       "faction":"Mystic",
       "type":"Asset",
       "illustrator":"Dimitri Bielak",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5297,14 +5297,14 @@
       "text":"Uses (4 charges). If Grotesque Statue has no charges, discard it.\n\n[reaction] When you would reveal a chaos token, spend 1 charge: Reveal 2 chaos tokens instead of 1. Choose 1 of those tokens to resolve, and ignore the other.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Grotesque Statue",
       "faction":"Mystic",
       "type":"Asset",
       "illustrator":"Josh Stewart",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5370,14 +5370,14 @@
       "text":"",
       "flavor":"The coat was not the most fashionable choice, but it did feel warm and reassuring in its bulk.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Leather Coat",
       "faction":"Survivor",
       "type":"Asset",
       "illustrator":"Andreia Ugrai",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5442,14 +5442,14 @@
       "text":"[reaction] After you successfully investigate by 2 or more, exhaust Scavenging: Choose an Item card in your discard pile and add it to your hand.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Scavenging",
       "faction":"Survivor",
       "type":"Asset",
       "illustrator":"Derk Venneman",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5516,14 +5516,14 @@
       "text":"[action]: Fight. You get +2 [combat] for this attack. This attack deals +1 damage. If a [skull] or [auto fail] symbol is revealed during this attack, discard Baseball Bat after the attack resolves.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Baseball Bat",
       "faction":"Survivor",
       "type":"Asset",
       "illustrator":"Mauro Dal Bo",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5589,14 +5589,14 @@
       "text":"[reaction] After you fail a skill test, exhaust Rabbit's Foot: Draw 1 card.",
       "flavor":"They claimed it would bring me good luck. I wouldn't say that's true. But now I feel like it would be even worse luck to get rid of it.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Rabbit's Foot",
       "faction":"Survivor",
       "type":"Asset",
       "illustrator":"Matthew Cowdery",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5662,14 +5662,14 @@
       "text":"[fast action] Discard Stray Cat: Automatically evade a non-Elite enemy at your location.",
       "flavor":"He never came if you called for him. It always seemed like he had his own agenda.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Stray Cat",
       "faction":"Survivor",
       "type":"Asset",
       "illustrator":"Stephen Somers",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5734,14 +5734,14 @@
       "text":"[fast action] Spend 1 resource: You get +1 [willpower] for this skill test.\n\n[fast action] Spend 1 resource: You get +1 [agility] for this skill test.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Dig Deep",
       "faction":"Survivor",
       "type":"Asset",
       "illustrator":"David Gaillet",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5806,14 +5806,14 @@
       "text":"Evade. Automatically evade all enemies at your location.",
       "flavor":"That should buy us some time.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Cunning Distraction",
       "faction":"Survivor",
       "type":"Event",
       "illustrator":"JB Casacop",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5878,14 +5878,14 @@
       "text":"Fast. Play after you fail a skill test by 2 or less while investigating.\n\nDiscover 2 clues in your location.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"\"Look what I found!\"",
       "faction":"Survivor",
       "type":"Event",
       "illustrator":"Mark Molnar",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -5950,14 +5950,14 @@
       "text":"Fast. Play when you would fail a skill test.\n\nGet +2 to your skill value for that test.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Lucky!",
       "faction":"Survivor",
       "type":"Event",
       "illustrator":"David Auden Nash",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6020,14 +6020,14 @@
       "text":"If this skill test is successful during an evasion attempt, the evading investigator may immediately disengage from each other enemy engaged with him or her, and may move to a connecting location.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Survival Instinct",
       "faction":"Survivor",
       "type":"Skill",
       "illustrator":"David Auden Nash",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6092,14 +6092,14 @@
       "text":"[reaction] When an enemy attacks you, exhaust Aquinnah and deal 1 horror to her: Deal that enemy's damage to another enemy at your location, instead. (You still take horror dealt by the attack.)",
       "flavor":"\"Do not be frightened by what you see. Be frightened by what you cannot see.\"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Aquinnah",
       "faction":"Survivor",
       "type":"Asset",
       "illustrator":"Tommy Arnold",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6164,14 +6164,14 @@
       "text":"Fast. Play after a non-weakness, non-Elite enemy at your location is evaded.\n\nShuffle that enemy into the encounter deck.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Close Call",
       "faction":"Survivor",
       "type":"Event",
       "illustrator":"Alexandre Dainche",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6236,14 +6236,14 @@
       "text":"Fast. Play when you would fail a skill test.\n\nGet +2 to your skill value for that test. Draw 1 card.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Lucky!",
       "faction":"Survivor",
       "type":"Event",
       "illustrator":"David Auden Nash",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6308,14 +6308,14 @@
       "text":"Fast. Play only during your turn.\n\nUntil the end of your turn, do not reveal chaos tokens for any skill tests you perform.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Will to Survive",
       "faction":"Survivor",
       "type":"Event",
       "illustrator":"Ilich Henriquez",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6382,14 +6382,14 @@
       "text":"[action]: Fight. You get +1 [combat] for this attack.\n\n[action] Discard Knife: Fight. You get +2 [combat] for this attack. This attack deals +1 damage.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Knife",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"Henning Ludvigsen",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6455,14 +6455,14 @@
       "text":"Uses (3 supplies).\n\n[action] Spend 1 supply: Investigate. Your location gets -2 shroud for this investigation.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Flashlight",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"Kip Ayers",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6527,14 +6527,14 @@
       "text":"Gain 3 resources.",
       "flavor":"You can never be too prepared.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Emergency Cache",
       "faction":"Neutral",
       "type":"Event",
       "illustrator":"Vincent Dutrait",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6597,14 +6597,14 @@
       "text":"Max 1 committed per skill test.\n\nIf this test is successful, draw 1 card.",
       "flavor":"Stay back! I'll handle this.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Guts",
       "faction":"Neutral",
       "type":"Skill",
       "illustrator":"Clark Huggins",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6667,14 +6667,14 @@
       "text":"Max 1 committed per skill test.\n\nIf this test is successful, draw 1 card.",
       "flavor":"At last, I've found it!",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Perception",
       "faction":"Neutral",
       "type":"Skill",
       "illustrator":"Andreia Ugrai",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6737,14 +6737,14 @@
       "text":"Max 1 committed per skill test.\n\nIf this test is successful, draw 1 card.",
       "flavor":"Die, you beast!",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Overpower",
       "faction":"Neutral",
       "type":"Skill",
       "illustrator":"Jose Vega",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6807,14 +6807,14 @@
       "text":"Max 1 committed per skill test.\n\nIf this test is successful, draw 1 card.",
       "flavor":"Too easy.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Manual Dexterity",
       "faction":"Neutral",
       "type":"Skill",
       "illustrator":"Priscilla Kim",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6877,14 +6877,14 @@
       "text":"Max 1 committed per skill test.",
       "flavor":"Sometimes, the most selfless acts can come from the strangest places",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Unexpected Courage",
       "faction":"Neutral",
       "type":"Skill",
       "illustrator":"Dleoblack",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -6950,14 +6950,14 @@
       "text":"",
       "flavor":"Bullets are one thing... twelve-inch fangs quite another.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Bulletproof Vest",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"David Auden Nash",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -7023,14 +7023,14 @@
       "text":"",
       "flavor":"This has been in my family for generations. Take care of it, and it will take care of you.",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Elder Sign Amulet",
       "faction":"Neutral",
       "type":"Asset",
       "illustrator":"Dimitri Bielak",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -7093,14 +7093,14 @@
       "text":"Revelation - Choose and discard all but 1 card from your hand.",
       "flavor":"Wait... where am I? What was I doing?",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Amnesia",
       "faction":"Neutral",
       "type":"Treachery",
       "illustrator":"Chris Peuler",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -7163,14 +7163,14 @@
       "text":"Revelation - Discard all your resources.",
       "flavor":"What was that noise?",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Paranoia",
       "faction":"Neutral",
       "type":"Treachery",
       "illustrator":"Cristina Vela",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -7233,14 +7233,14 @@
       "text":"Revelation - Add Haunted to your threat area.\n\nYou get -1 to each of your skills.\n\n[action][action]: Discard Haunted.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Haunted",
       "faction":"Neutral",
       "type":"Treachery",
       "illustrator":"Magali Villeneuve",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -7303,14 +7303,14 @@
       "text":"Revelation - Add Psychosis to your threat area.\n\nForced - After you take 1 or more horror: Take 1 direct damage.\n\n[action][action]: Discard Psychosis.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Psychosis",
       "faction":"Neutral",
       "type":"Treachery",
       "illustrator":"Tiziano Baracchi",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{
@@ -7373,14 +7373,14 @@
       "text":"Revelation - Add Hypochondria to your threat area.\n\nForced - After you take 1 or more damage: Take 1 direct horror.\n\n[action][action]: Discard Hypochondria.",
       "flavor":"",
       "deckSize":null,
-      "deckRequirements":[
+      "deckReq_ids":[
 
       ],
       "name":"Hypochondria",
       "faction":"Neutral",
       "type":"Treachery",
       "illustrator":"Rafał Hrynkiewicz",
-      "includedPack":{
+      "pack_id":{
          "$oid":"5b588aa907332121c8e9257d"
       },
       "number":{

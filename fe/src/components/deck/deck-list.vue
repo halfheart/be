@@ -17,6 +17,7 @@
 
               </v-card-text>
               <v-card-actions>
+                {{ i.author_id.username }}
                 <v-spacer />
                 <v-btn flat color="indigo" :href="$cfg.path.web+'deck/?id='+i._id">
                   선택

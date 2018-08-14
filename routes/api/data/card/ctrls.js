@@ -5,7 +5,7 @@ exports.card = (req, res) => {
   const { _id } = req.query;
 
   Card.findOne({ _id: _id })
-  .populate('deckRequirements')
+  .populate('deckReq_ids')
   .then((r) => {
     res.send({ success: true, card: r });
   })
@@ -48,11 +48,11 @@ exports.deckSourceList = (req, res) => {
 
       return Card.find()
         .where('type').equals('조사자')
-        .select('deckRequirements');
+        .select('deckReq_ids');
     })
     .then((c) => {
       c.forEach((i) => {
-        i.deckRequirements.forEach((j) => {
+        i.deckReq_ids.forEach((j) => {
           nin.push(j);
         });
       });
@@ -61,7 +61,7 @@ exports.deckSourceList = (req, res) => {
         .where('type').ne('조사자')
         .where('_id').nin(nin)
         .where('subtype').ne('Basic Weakness')
-        .populate('includedPack');
+        .populate('pack_id');
     })
     .then((c) => {
       cards.array = c;
@@ -106,11 +106,11 @@ exports.list = (req, res) => {
       let s = {};
       s[order] = sort;
       return Card.find(query)
-      .populate('includedPack')
+      .populate('pack_id')
       .populate({
-        path: 'deckRequirements',
+        path: 'deckReq_ids',
         populate: {
-          path: 'includedPack',
+          path: 'pack_id',
           select: 'name'
         }
       })
@@ -175,9 +175,9 @@ exports.add = (req, res) => {
     backText,
     backFlavor,
     deckSize,
-    deckRequirements,
+    deckReq_ids,
     illustrator,
-    includedPack,
+    pack_id,
     number,
     deckOption
   } = req.body
@@ -186,7 +186,7 @@ exports.add = (req, res) => {
   if (!faction) res.send({ success: false, msg: 'params err faction' });
   if (!type) res.send({ success: false, msg: 'params err type' });
   if (!illustrator) res.send({ success: false, msg: 'params err illustrator' });
-  if (!includedPack) res.send({ success: false, msg: 'params err includedPack' });
+  if (!pack_id) res.send({ success: false, msg: 'params err pack_id' });
   if (!number) res.send({ success: false, msg: 'params err number' });
 
   const addedCard = new Card({
@@ -214,9 +214,9 @@ exports.add = (req, res) => {
     backText,
     backFlavor,
     deckSize,
-    deckRequirements,
+    deckReq_ids,
     illustrator,
-    includedPack,
+    pack_id,
     number,
     deckOption
   });
@@ -239,7 +239,7 @@ exports.mod = (req, res) => {
   if (!set.faction) res.send({ success: false, msg: 'params err faction' });
   if (!set.type) res.send({ success: false, msg: 'params err type' });
   if (!set.illustrator) res.send({ success: false, msg: 'params err illustrator' });
-  if (!set.includedPack) res.send({ success: false, msg: 'params err includedPack' });
+  if (!set.pack_id) res.send({ success: false, msg: 'params err pack_id' });
   if (!set.number) res.send({ success: false, msg: 'params err number' });
 
   const o = { _id: set._id };

@@ -89,6 +89,7 @@ export default {
       this.pending = true
       this.$axios.post(`${this.$cfg.path.api}data/deck`, {
         name: `${this.investigatorName} Deck`,
+        author_id: this.$auth._id,
         investigator: this.deck.investigator,
         cards: this.deck.cards
       })
@@ -124,7 +125,7 @@ export default {
       })
     },
     setRequirements (investigator) {
-      const requirements = investigator.deckRequirements
+      const requirements = investigator.deckReq_ids
 
       this.requirements = this.deck.cards.push(this.rbw)
 

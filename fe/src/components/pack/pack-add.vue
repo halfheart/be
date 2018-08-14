@@ -38,7 +38,7 @@ export default {
     add (pack) {
       this.$axios.post(`${this.$cfg.path.api}data/pack`, {
         name: pack.name,
-        parent: pack.parent
+        parent_id: pack.parent_id
       })
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)

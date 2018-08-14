@@ -33,7 +33,7 @@ export default {
       this.$axios.put(`${this.$cfg.path.api}data/pack`, {
         _id: pack._id,
         name: pack.name,
-        parent: pack.parent
+        parent_id: pack.parent_id
       })
       .then((res) => {
         if (!res.data.success) throw new Error(res.data.msg)

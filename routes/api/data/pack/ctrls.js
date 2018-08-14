@@ -1,12 +1,11 @@
 const Pack = require('../../../../models/packs');
 
 exports.pack = (req, res) => {
-  const { _id } = req.query;
-  console.log(_id);
+  const query = req.query;
 
-  Pack.findOne({ _id: _id })
+  Pack.find(query)
   .then((r) => {
-    res.send({ success: true, pack: r });
+    res.send({ success: true, packs: r });
   })
   .catch((err) => {
     res.send({ success: false, msg: err.message });
@@ -33,6 +32,7 @@ exports.list = (req, res) => {
   skip = parseInt(skip);
   limit = parseInt(limit);
   sort = parseInt(sort);
+  query = EJSON.parse(query);
 
   let packs = {
     cnt: 0,
@@ -63,41 +63,17 @@ exports.list = (req, res) => {
     });
 };
 
-exports.filter = (req, res) => {
-  const {
-    exclude,
-    parent
-  } = req.query;
-
-  let packs = {
-    array: []
-  };
-
-  let query = Pack.find();
-
-  if (exclude !== undefined) query = query.where('name').ne(exclude);
-  if (parent === 'null') query = query.where('parent').equals(null);
-
-  query.then((r) => {
-    packs.array = r;
-    res.send({ success: true, packs: packs });
-  })
-  .catch((err) => {
-    res.send({ success: false, msg: err.message });
-  });
-};
-
 exports.add = (req, res) => {
   const {
     name,
-    parent
+    parent_id
   } = req.body
 
   if (!name) res.send({ success: false, msg: 'params err name' });
 
   const addedPack = new Pack({
     name,
-    parent
+    parent_id
   });
 
   addedPack.save()
@@ -119,9 +95,9 @@ exports.mod = (req, res) => {
   const o = { _id: set._id };
   const modedPack = { $set: set };
 
-  Pack.findOne({ parent: set._id })
+  Pack.findOne({ parent_id: set._id })
   .then((r) => {
-    if (r && set.parent !== null) throw new Error('자식 팩이 있는경우 부모를 가질 수 없습니다');
+    if (r && set.parent_id !== null) throw new Error('자식 팩이 있는경우 부모를 가질 수 없습니다');
     return Pack.findOneAndUpdate(o, modedPack)
   })
   .then(() => {
@@ -143,7 +119,7 @@ exports.del = (req, res) => {
     return Pack.remove({ _id: _id });
   })
   .then(() => {
-    return Pack.update({ parent: _id }, { parent: null }, { multi: true });
+    return Pack.update({ parent_id: _id }, { parent_id: null }, { multi: true });
   })
   .then(() => {
     res.send({ success: true });

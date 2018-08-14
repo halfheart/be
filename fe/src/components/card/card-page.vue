@@ -35,7 +35,7 @@
         {{ card.flavor }}
       </div>
       <div><v-icon>brush</v-icon>{{ card.illustrator }}</div>
-      <div>{{ `${card.includedPack.name} #${card.number}` }}</div>
+      <div>{{ `${card.pack_id.name} #${card.number}` }}</div>
     </v-card-text>
   </v-card>
 </template>

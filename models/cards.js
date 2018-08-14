@@ -7,7 +7,7 @@ const cardSchema = new mongoose.Schema({
   faction: { type: String, required: true }, // required
   type: { type: String, required: true }, // required
   illustrator: { type: String, required: true }, // required
-  includedPack: { type: mongoose.Schema.Types.ObjectId, ref: 'pack', required: true }, // required
+  pack_id: { type: mongoose.Schema.Types.ObjectId, ref: 'pack', required: true }, // required
   number: { type: Number, required: true }, // required
   subname: { type: String, default: '' },
   img: { type: String, default: '' },
@@ -40,7 +40,7 @@ const cardSchema = new mongoose.Schema({
       min: { type: Number, default: 0 },
       max: { type: Number, default: 5 }
   }],
-  deckRequirements: [{ type: mongoose.Schema.Types.ObjectId, ref: 'card' }]
+  deckReq_ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'card' }]
 });
 
 const Card = mongoose.model('card', cardSchema);

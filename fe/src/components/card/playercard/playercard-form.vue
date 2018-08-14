@@ -118,7 +118,7 @@
               :items="includedPackItems"
               item-text="name"
               item-value="_id"
-              v-model="form.includedPack"
+              v-model="form.pack_id"
               :rules="packRules"
               ></v-select>
               <input type="file" label="앞면 이미지" />
@@ -194,7 +194,7 @@ export default {
         text: '',
         flavor: '',
         illustrator: '',
-        includedPack: '',
+        pack_id: '',
         number: 0
       },
       show: false
@@ -234,7 +234,7 @@ export default {
           text: '',
           flavor: '',
           illustrator: '',
-          includedPack: '',
+          pack_id: '',
           number: 0
         }
         this.show = false
@@ -287,7 +287,7 @@ export default {
           text: d.text,
           flavor: d.flavor,
           illustrator: d.illustrator,
-          includedPack: d.includedPack,
+          pack_id: d.pack_id,
           number: d.number
         }
         this.readPackList()

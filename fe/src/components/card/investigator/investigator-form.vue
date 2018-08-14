@@ -81,7 +81,7 @@
               ></v-text-field>
               <v-select
               label="필수 카드"
-              v-model="form.deckRequirements"
+              v-model="form.deckReq_ids"
               :items="requirementItems"
               item-text="name"
               item-value="_id"
@@ -104,7 +104,7 @@
               :items="includedPackItems"
               item-text="name"
               item-value="_id"
-              v-model="form.includedPack"
+              v-model="form.pack_id"
               :rules="packRules"
               ></v-select>
               <v-layout v-for="(i, index) in this.$cfg.const.FACTIONS" :key="index">
@@ -188,9 +188,9 @@ export default {
         backText: '',
         backFlavor: '',
         deckSize: 0,
-        deckRequirements: [],
+        deckReq_ids: [],
         illustrator: '',
-        includedPack: '',
+        pack_id: '',
         number: 0,
         deckOption: {
           sw: [true, true, true, true, true, true],
@@ -235,9 +235,9 @@ export default {
           backText: '',
           backFlavor: '',
           deckSize: 0,
-          deckRequirements: [],
+          deckReq_ids: [],
           illustrator: '',
-          includedPack: '',
+          pack_id: '',
           number: 0,
           deckOption: {
             sw: [true, true, true, true, true, true],
@@ -330,9 +330,9 @@ export default {
           backText: d.backText,
           backFlavor: d.backFlavor,
           deckSize: d.deckSize,
-          deckRequirements: d.deckRequirements,
+          deckReq_ids: d.deckReq_ids,
           illustrator: d.illustrator,
-          includedPack: d.includedPack,
+          pack_id: d.pack_id,
           number: d.number,
           deckOption: o
         }

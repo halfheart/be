@@ -6,7 +6,7 @@
           <now-loading :show="show" />
           <template v-if="show">
             <v-card-title>
-              {{ `${deck.name} (${deckSize})` }}
+              {{ `${deck.name} (${deckSize}) ${deck.author_id.username}` }}
               <v-spacer />
               <v-btn icon flat @click="mod()"><v-icon>edit</v-icon></v-btn>
               <deck-del :id="id" />
@@ -39,10 +39,12 @@
 
       </v-flex>
     </v-layout>
+    <deck-comments :id="this.id" />
   </v-container>
 </template>
 
 <script>
+import deckComments from '@/components/deck/comments'
 import deckDel from '@/components/deck/deck-del'
 import nowLoading from '@/components/now-loading'
 import cardStyleMixin from '@/components/mixins/card-style-mixin'
@@ -54,6 +56,7 @@ export default {
     cardListMixin
   ],
   components: {
+    deckComments,
     nowLoading,
     deckDel
   },

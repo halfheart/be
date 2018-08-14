@@ -52,7 +52,7 @@ export default {
         text: form.text,
         flavor: form.flavor,
         illustrator: form.illustrator,
-        includedPack: form.includedPack,
+        pack_id: form.pack_id,
         number: form.number
       })
       .then((res) => {

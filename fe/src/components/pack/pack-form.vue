@@ -10,13 +10,13 @@
               <v-text-field
               label="팩 이름"
               :rules="nameRules"
-              v-model="form.name"
+              v-model="pack.name"
               ></v-text-field>
               <v-select
               :items="parentPacks"
               item-text="name"
               item-value="_id"
-              v-model="form.parent"
+              v-model="pack.parent_id"
               label="부모 팩"
               ></v-select>
             </v-card-text>
@@ -34,7 +34,11 @@
 
 <script>
 import nowLoading from '@/components/now-loading'
+import packData from './mixin/pack-data'
 export default {
+  mixins: [
+    packData
+  ],
   components: {
     nowLoading
   },
@@ -48,11 +52,6 @@ export default {
         v => !!v || '이름을 입력하세요'
       ],
       parentPacks: [],
-      form: {
-        _id: null,
-        name: '',
-        parent: null
-      },
       show: false
     }
   },
@@ -64,7 +63,7 @@ export default {
   methods: {
     submit () {
       if (!this.$refs.form.validate()) return console.log('검증되지않음')
-      this.$emit('submit-form', this.form)
+      this.$emit('submit-form', this.pack)
     },
     close () {
       this.$emit('close-form')
@@ -73,19 +72,15 @@ export default {
       this.$refs.form.reset()
 
       this.$nextTick(() => {
-        this.form = {
-          _id: null,
-          name: '',
-          parent: null
-        }
+        this.resetPack()
         this.show = false
       })
     },
     readParentPacks () {
       this.$axios.get(`${this.$cfg.path.api}data/pack/filter`, {
         params: {
-          exclude: this.form.name,
-          parent: 'null'
+          exclude: this.pack.name,
+          parent_id: 'null'
         }
       })
       .then((res) => {

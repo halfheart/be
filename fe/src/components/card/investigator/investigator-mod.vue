@@ -63,9 +63,9 @@ export default {
         backText: form.backText,
         backFlavor: form.backFlavor,
         deckSize: form.deckSize,
-        deckRequirements: form.deckRequirements,
+        deckReq_ids: form.deckReq_ids,
         illustrator: form.illustrator,
-        includedPack: form.includedPack,
+        pack_id: form.pack_id,
         number: form.number,
         deckOption: deckOption
       })

@@ -16,7 +16,7 @@
             <v-card-text>
               <ul>
                 <li>덱 사이즈: {{ i.deckSize }}장</li>
-                <li v-for="(i, index) in i.deckRequirements" :key="index">
+                <li v-for="(i, index) in i.deckReq_ids" :key="index">
                   <card-popover :card="i" my-style="pr-1" />1장
                 </li>
                 <li>랜덤 기본 약점 카드 1장</li>

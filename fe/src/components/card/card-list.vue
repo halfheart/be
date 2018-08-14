@@ -26,7 +26,7 @@
         <td>
           <span v-for="(i, index) in cards.item.trait" :key="index">{{ `${i}. `}}</span>
         </td>
-        <td>{{ `${cards.item.includedPack.name} #${cards.item.number}` }}</td>
+        <td>{{ `${cards.item.pack_id.name} #${cards.item.number}` }}</td>
         <td>
           <v-layout>
             <investigator-mod v-if="cards.item.type === $cfg.const.INVESTIGATOR" :id="cards.item._id" @list="list()" />

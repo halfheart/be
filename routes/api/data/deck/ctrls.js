@@ -6,8 +6,9 @@ exports.deck = (req, res) => {
   if (id === undefined) res.send({ success: false, msg: 'params err id' });
 
   Deck.findOne({ _id: id })
-  .populate('investigator')
-  .populate('cards.card')
+  .populate('investigator_id')
+  .populate('cards.card_id')
+  .populate('author_id')
   .then((r) => {
     res.send({ success: true, deck: r });
   })
@@ -50,7 +51,8 @@ exports.list = (req, res) => {
     let s = {};
     s[order] = sort;
     return Deck.find(query)
-      .populate('investigator')
+      .populate('investigator_id')
+      .populate('author_id')
       .sort(s)
       .skip(skip)
       .limit(limit);
@@ -98,7 +100,7 @@ exports.mod = (req, res) => {
   cards.forEach((i, index) => {
     if (index === 0) return
     cardArray.push({
-      card: i.card._id,
+      card_id: i.card._id,
       qty: i.qty,
       require: i.require
     });
@@ -108,7 +110,7 @@ exports.mod = (req, res) => {
   const modedDeck = {
     _id: _id,
     name: name,
-    investigator: investigator._id,
+    investigator_id: investigator._id,
     cards: cardArray
   };
 
@@ -124,6 +126,7 @@ exports.mod = (req, res) => {
 exports.add = (req, res) => {
   const {
     name,
+    author,
     investigator,
     cards
   } = req.body;
@@ -137,7 +140,7 @@ exports.add = (req, res) => {
   cards.forEach((i, index) => {
     if (index === 0) return
     cardArray.push({
-      card: i.card._id,
+      card_id: i.card._id,
       qty: i.qty,
       require: i.require
     });
@@ -145,7 +148,8 @@ exports.add = (req, res) => {
 
   const addedDeck = new Deck({
     name: name,
-    investigator: investigatorId,
+    author_id: author,
+    investigator_id: investigatorId,
     cards: cardArray
   });
 
